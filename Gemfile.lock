@@ -169,6 +169,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.1)
   devise
   formtastic (= 2.0.0)
+  inherited_resources
   jquery-rails
   pg
   rails (= 3.1.3)

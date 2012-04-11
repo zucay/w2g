@@ -1,0 +1,2 @@
+class MstCitycodesController < ApplicationController
+end
