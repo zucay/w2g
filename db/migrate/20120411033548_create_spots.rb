@@ -2,7 +2,7 @@ class CreateSpots < ActiveRecord::Migration
   def change
     info_col_num = 15
     create_table :spots do |t|
-            t.string   "name"
+      t.string   "name"
       t.string   "yomi"
       t.string   "pref"
       t.string   "city"
@@ -44,7 +44,6 @@ class CreateSpots < ActiveRecord::Migration
       t.integer  "user_id"
       t.integer  "caretaker_id"
       t.integer  "project_id"
-      t.integer  "header_id"
       t.integer  "note_id"
 
       t.boolean  "deny", :default => false
