@@ -7,7 +7,8 @@ gem 'rails', '3.1.3'
 
 gem 'pg'
 gem 'devise'
-gem 'activeadmin'
+gem 'formtastic', '2.0.0'
+gem 'activeadmin', '0.4.2'
 group :test do
 			gem 'rspec-rails'
 end
