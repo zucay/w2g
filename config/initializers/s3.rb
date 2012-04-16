@@ -9,7 +9,7 @@ if(!ENV['w2g_access_key_id'] ||
    !ENV['w2g_bucket'] || 
    !ENV['w2g_s3_host_name']
    )
-  raise 'ENVVAR not found. Are there defined? : w2g_access_key_id, w2g_secret_access_key, w2g_bucket'
+  raise 'ENVVAR not found. Are there defined? : w2g_access_key_id, w2g_secret_access_key, w2g_bucket. to set envvar in heroku, use heroku config:add foo=var'
 end
 W2g::Application.config.S3_CREDENTIALS = { }  
 cre = W2g::Application.config.S3_CREDENTIALS
