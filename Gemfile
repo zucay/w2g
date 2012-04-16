@@ -10,6 +10,8 @@ gem 'devise'
 gem 'formtastic', '2.0.0'
 gem 'activeadmin', '0.4.2'
 gem 'inherited_resources'
+gem 'paperclip'
+gem 'aws-sdk'
 group :test do
 			gem 'rspec-rails'
 end

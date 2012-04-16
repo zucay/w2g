@@ -1,6 +1,7 @@
 class CreateSpots < ActiveRecord::Migration
   def change
     info_col_num = 15
+    pic_num = 5
     create_table :spots do |t|
       t.string   "name"
       t.string   "yomi"
@@ -28,14 +29,17 @@ class CreateSpots < ActiveRecord::Migration
       t.string   "access_car"
       t.string   "about_title"
       t.string   "about_body"
-
+      pic_num.times do |i|
+        t.string "pic#{i}_file_name"
+        t.string "pic#{i}_content_type"
+        t.integer "pic#{i}_file_size"
+        t.datetime "pic#{i}_updated_at"
+      end
+      t.string "pic_info"
+      
       info_col_num.times do |i|
         t.string "info_#{i}"
       end
-
-      t.string   "photo_file_name"
-      t.string   "photo_content_type"
-      t.string   "photo_file_size"
 
       t.boolean  "checked"
       t.boolean  "caretaker_inputed"

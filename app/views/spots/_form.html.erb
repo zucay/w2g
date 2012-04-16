@@ -1,0 +1,7 @@
+<%= semantic_form_for @spot, :html=>{:multipart => true} do |f| %>
+  <%= f.inputs do %>
+	  <%= f.input :name %>
+	  <%= f.input :pic1, :as => :file %>
+	<% end  %>
+	<%= f.buttons %>
+<% end  %>
