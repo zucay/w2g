@@ -11,6 +11,15 @@ class CreateSpots < ActiveRecord::Migration
       t.string   "zipcode"
       t.string   "build_name"
       t.string   "tel"
+      t.string   "tel_info"
+      pic_num.times do |i|
+        t.string "pic#{i}_file_name"
+        t.string "pic#{i}_content_type"
+        t.integer "pic#{i}_file_size"
+        t.datetime "pic#{i}_updated_at"
+      end
+      
+      
       t.integer  "lat_256jp"
       t.integer  "lng_256jp"
       t.float    "lat_world"
@@ -29,20 +38,13 @@ class CreateSpots < ActiveRecord::Migration
       t.string   "access_car"
       t.string   "about_title"
       t.string   "about_body"
-      pic_num.times do |i|
-        t.string "pic#{i}_file_name"
-        t.string "pic#{i}_content_type"
-        t.integer "pic#{i}_file_size"
-        t.datetime "pic#{i}_updated_at"
-      end
+
       t.string "pic_info"
       
       info_col_num.times do |i|
         t.string "info_#{i}"
       end
 
-      t.boolean  "checked"
-      t.boolean  "caretaker_inputed"
 
       # relation
       t.integer  "user_id"
@@ -50,6 +52,10 @@ class CreateSpots < ActiveRecord::Migration
       t.integer  "project_id"
       t.integer  "note_id"
 
+
+      # manage
+      t.boolean  "checked"
+      t.boolean  "caretaker_inputed"
       t.boolean  "deny", :default => false
       t.string   "ext_id"
       t.integer  "linenum"

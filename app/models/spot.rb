@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 class Spot < ActiveRecord::Base
   belongs_to :project
-  validates_presence_of :name, :message => '名称は必ず入力してください'
-  validates_format_of :yomi, :with => /^[ァ-タダ-ヶ　ー]+$/, :message => 'ヨミガナは全角カタカナのみで、入力してください'
-  #validates_format_of :tel, :with => /^[0-9\-]*$/, :message => '電話番号は半角数字で入力してください'
-  validates_format_of :pref, :with => /[都道府県]$/, :message => '都道府県名のみ入力してください'
+  validates_presence_of :name, :on => :update, :message => '名称は必ず入力してください'
+  validates_format_of :yomi, :on => :update, :with => /^[ァ-タダ-ヶ　ー]+$/, :message => 'ヨミガナは全角カタカナのみで、入力してください'
+  #validates_format_of :tel, :on => :update, :with => /^[0-9\-]*$/, :message => '電話番号は半角数字で入力してください'
+  validates_format_of :pref, :on => :update, :with => /[都道府県]$/, :message => '都道府県名のみ入力してください'
   
 
 
