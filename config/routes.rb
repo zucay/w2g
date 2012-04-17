@@ -11,7 +11,8 @@ W2g::Application.routes.draw do
   resources :headers
   resources :notes
   resources :caretakers
-
+  
+  match ':id', :to => 'spots#edit'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

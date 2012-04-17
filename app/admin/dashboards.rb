@@ -7,7 +7,7 @@ ActiveAdmin::Dashboards.build do
   section "Recent Projects" do
     ul do
       Project.last(5).collect do |pj|
-        li link_to(pj.title, admin_post_path(post))
+        li link_to(pj.name, admin_project_path(pj))
       end
     end
   end

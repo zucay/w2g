@@ -15,6 +15,8 @@ gem 'aws-sdk'
 group :test do
 			gem 'rspec-rails'
 end
+gem 'spreadsheet'
+gem 'mymatrix'
 
 # Gems used only for assets and not required
 # in production environments by default.
