@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 class Spot < ActiveRecord::Base
   belongs_to :project
+  has_many :caretakers
+  accepts_nested_attributes_for :caretakers
+  has_many :communications
+  accepts_nested_attributes_for :communications
+
+
   validates_presence_of :name, :on => :update, :message => '名称は必ず入力してください'
   validates_format_of :yomi, :on => :update, :with => /^[ァ-タダ-ヶ　ー]+$/, :message => 'ヨミガナは全角カタカナのみで、入力してください'
   #validates_format_of :tel, :on => :update, :with => /^[0-9\-]*$/, :message => '電話番号は半角数字で入力してください'

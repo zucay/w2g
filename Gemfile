@@ -15,6 +15,9 @@ gem 'aws-sdk'
 group :test do
 			gem 'rspec-rails'
 end
+group :development do
+			gem 'rails-erd'
+end
 gem 'spreadsheet'
 gem 'mymatrix'
 

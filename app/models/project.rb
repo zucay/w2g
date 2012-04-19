@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
     mx.getHeaders.each do |head|
       if()
       else
-        #notfound
+        # notfound
       end
     end
   end

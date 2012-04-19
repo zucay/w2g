@@ -1,4 +1,120 @@
 HEADER_01:
+ id: 1
+ header_name: '標準ヘッダ'
+ name_active: true
+ name_not_null: true
+ name_label: '施設名称'
+ name_example: ''
+ name_desc: '四谷パーク'
+ yomi_active: true
+ yomi_not_null: true
+ yomi_label: '施設名称ヨミ'
+ yomi_example: 'ヨツヤパーク'
+ yomi_desc: 'カタカナで入力してください'
+ pref_active: true
+ pref_not_null: true
+ pref_label: '都道府県'
+ pref_example: '東京都'
+ pref_desc: ''
+ city_active: false
+ city_not_null: false
+ city_label: ''
+ city_example: ''
+ city_desc: ''
+ addr_active: true
+ addr_not_null: true
+ addr_label: '残り住所'
+ addr_example: '新宿区四谷３−７'
+ addr_desc: '都道府県を除いた残り住所を入力してください'
+ zipcode_active: false
+ zipcode_not_null: false
+ zipcode_label: ''
+ zipcode_example: ''
+ zipcode_desc: ''
+ build_name_active: false
+ build_name_not_null: false
+ build_name_label: ''
+ build_name_example: ''
+ build_name_desc: ''
+ tel_active: true
+ tel_not_null: true
+ tel_label: '電話番号'
+ tel_example: '03-3352-7334'
+ tel_desc: ''
+ hour_active: true
+ hour_not_null: true
+ hour_label: '営業時間'
+ hour_example: '8:00〜18:00'
+ hour_desc: '特にない場合「入場自由」と記載をお願いいたします。'
+ holiday_active: true
+ holiday_not_null: true
+ holiday_label: '休業日'
+ holiday_example: '月曜日（祝日の場合は営業）、'
+ holiday_desc: '特にない場合「入場自由」と記載をお願いいたします。'
+ spot_fee_active: true
+ spot_fee_not_null: true
+ spot_fee_label: '料金'
+ spot_fee_example: '入場料：5歳以上200円、4歳以下無料'
+ spot_fee_desc: '大人/子供など年齢により料金が変わる場合、年齢がわかるように記載をお願いいたします。'
+ has_park_active: true
+ has_park_not_null: false
+ has_park_label: '一般客向けの駐車場有無'
+ has_park_example: ''
+ has_park_desc: '一般客向け駐車場がある場合チェックしてください。'
+ park_num_active: true
+ park_num_not_null: false
+ park_num_label: '一般客向け駐車台数'
+ park_num_example: ''
+ park_num_desc: ''
+ park_fee_active: true
+ park_fee_not_null: false
+ park_fee_label: '一般客向け駐車料金'
+ park_fee_example: '30分200円、以降1時間ごとに200円'
+ park_fee_desc: ''
+ tollway_active: false
+ tollway_not_null: false
+ tollway_label: ''
+ tollway_example: ''
+ tollway_desc: ''
+ url_active: true
+ url_not_null: false
+ url_label: 'ホームページURL'
+ url_example: 'http://www.ramzes.co.jp'
+ url_desc: ''
+ access_train_active: true
+ access_train_not_null: false
+ access_train_label: '最寄り駅からのアクセス'
+ access_train_example: '地下鉄丸の内線四谷三丁目駅よりバスで約10分、左門町バス停下車後徒歩で約3分'
+ access_train_desc: '最寄り駅下車後の行き方を記載くださいませ。'
+ access_car_active: true
+ access_car_not_null: false
+ access_car_label: '最寄りICからのアクセス'
+ access_car_example: '〇〇自動車道〇〇ICより〇〇方面に約〇〇km'
+ access_car_desc: '最寄りのインターチェンジからの行き方を記載くださいませ。'
+ about_title_active: false
+ about_title_not_null: false
+ about_title_label: ''
+ about_title_example: ''
+ about_title_desc: ''
+ about_body_active: false
+ about_body_not_null: false
+ about_body_label: '紹介文'
+ about_body_example: ''
+ about_body_desc: '施設紹介のための文章をご記入くださいませ。ご記入頂いた文章をベースに、弊社にて施設紹介文を作成させていただきます。'
+ pic0_file_name_active: true
+ pic0_file_name_label: '施設画像1'
+ pic1_file_name_active: true
+ pic1_file_name_label: '施設画像2'
+ pic2_file_name_active: true
+ pic2_file_name_label: '施設画像3'
+ pic_info_active: true
+ pic_info_not_null: false
+ pic_info_label: '写真利用時注意事項・権利者表示'
+ pic_info_example: '「別途利用申請書を提出してください」「要クレジット：四谷観光協会」'
+ pic_info_desc: '写真利用時の注意事項または権利者表示等がありましたらご記入くださいませ。'
+
+HEADER_02:
+ id: 2
  header_name: 'VAL研あじさい'
  name_active: true
  name_not_null: true
@@ -100,8 +216,11 @@ HEADER_01:
  about_body_label: '紹介文'
  about_body_example: ''
  about_body_desc: '施設紹介のための文章をご記入くださいませ。ご記入頂いた文章をベースに、弊社にて施設紹介文を作成させていただきます。'
+ pic0_file_name_active: true
  pic0_file_name_label: '施設画像1'
+ pic1_file_name_active: true
  pic1_file_name_label: '施設画像2'
+ pic2_file_name_active: true
  pic2_file_name_label: '施設画像3'
  pic_info_active: true
  pic_info_not_null: false

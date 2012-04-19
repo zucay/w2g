@@ -9,9 +9,6 @@ class CreateCaretakers < ActiveRecord::Migration
       t.string   "email"
       t.string   "tel"
       t.string   "fax"
-
-      t.datetime "created_at",  :null => false
-      t.datetime "updated_at",  :null => false
       t.integer  "ext_id"
       t.integer  "note_id"
       t.string   "zipcode"
