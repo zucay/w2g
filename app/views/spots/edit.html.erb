@@ -1,10 +1,3 @@
-<br />
-<h3>
-	<% if @spot.project  %>
-		<% pj_name = @spot.project.name %>
-	<% else  %>
-		<% pj_name = '施設情報' %>
-	<% end  %>
-	<%= pj_name  %> 取材シート : <%= @spot.name %>様
-</h3>
+<%= render 'header' %>
 <%= render 'form' %>
+<%= render 'footer' %>

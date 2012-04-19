@@ -6,13 +6,19 @@ W2g::Application.routes.draw do
   #devise_for :admin_users, ActiveAdmin::Devise.config, ActiveAdmin::Devise.config
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resources :spots
+  resources :spots do 
+    member do 
+      get :imgup
+    end
+  end
+
   resources :projects
   resources :headers
   resources :notes
   resources :caretakers
   
   match ':id', :to => 'spots#edit'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

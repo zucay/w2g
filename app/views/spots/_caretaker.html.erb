@@ -1,0 +1,8 @@
+    <% # 記入者情報  %>
+
+		<%= f.semantic_fields_for :caretaker do |cf| %>
+			<%= cf.input :name, :label => '組織名', :hint => '例：四谷観光協会' %>
+			<%= cf.input :div_name, :label => '部署名', :hint => '例：施設管理課' %>
+			<%= cf.input :person, :label => 'ご担当者様名', :hint => '例：四谷太郎' %>
+			<%= cf.input :tel, :label => '電話番号', :hint => '例：03-3352-7334' %>
+		<% end %>
