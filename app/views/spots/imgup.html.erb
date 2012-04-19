@@ -9,7 +9,9 @@
 		STEP2. 
 		<%= render :partial => 'picform', :locals =>{:f => f} %>
 	<% end  %>
-	(次の画面が表示されるまでウィンドウは閉じないようお願いいたします)
-	<%= f.buttons %>
+
+	<%= f.buttons do %>
+		<%= f.submit('情報を送信する') %>	(次の画面が表示されるまでウィンドウは閉じないようお願いいたします。)
+	<% end  %>
 <% end  %>
 <%= render 'footer' %>
