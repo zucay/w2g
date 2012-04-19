@@ -317,18 +317,6 @@ ActiveRecord::Schema.define(:version => 20120418031937) do
     t.datetime "updated_at"
   end
 
-  create_table "rsssites", :force => true do |t|
-    t.string   "name"
-    t.string   "subname"
-    t.string   "url"
-    t.string   "parser_path"
-    t.datetime "lastcrawled_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "parser_name"
-    t.integer  "priority"
-  end
-
   create_table "spots", :force => true do |t|
     t.string   "name"
     t.string   "yomi"
