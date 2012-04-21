@@ -19,12 +19,18 @@ class Spot < ActiveRecord::Base
   validates_format_of :pref, :on => :update, :with => /[都道府県]{0,1}$/, :message => '都道府県名のみ入力してください'
 
   # other settings
-
-  has_attached_file :pic0, :storage => :s3,:s3_credentials => W2g::Application.config.S3_CREDENTIALS, :path => ":attachment/:id/:style.:extension"
-  has_attached_file :pic1, :storage => :s3,:s3_credentials => W2g::Application.config.S3_CREDENTIALS, :path => ":attachment/:id/:style.:extension"
-  has_attached_file :pic2, :storage => :s3,:s3_credentials => W2g::Application.config.S3_CREDENTIALS, :path => ":attachment/:id/:style.:extension"
-  has_attached_file :pic3, :storage => :s3,:s3_credentials => W2g::Application.config.S3_CREDENTIALS, :path => ":attachment/:id/:style.:extension"
-  has_attached_file :pic4, :storage => :s3,:s3_credentials => W2g::Application.config.S3_CREDENTIALS, :path => ":attachment/:id/:style.:extension"
+  picset = {
+    :storage => :s3,
+    :s3_credentials => W2g::Application.config.S3_CREDENTIALS, 
+    :path => ":attachment/:id/:style.:extension",
+    :styles => {:small => ["128x128#", :png] },
+    :default_url => '/img/no_img.jpg',
+  }
+  has_attached_file :pic0, picset
+  has_attached_file :pic1, picset
+  has_attached_file :pic2, picset
+  has_attached_file :pic3, picset
+  has_attached_file :pic4, picset
 
   #callback methods
   def build_relation
