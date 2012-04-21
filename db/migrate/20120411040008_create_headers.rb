@@ -1,6 +1,7 @@
 class CreateHeaders < ActiveRecord::Migration
   def change
     names = Spot.column_names - %w[id created_at updated_at]
+    names = %w[pic] + names
     create_table :headers do |t|
       t.string 'header_name'
       names.each do |name| 
@@ -14,6 +15,7 @@ class CreateHeaders < ActiveRecord::Migration
         t.string  "#{name}_example"
         t.string "#{name}_desc"
       end
+      
       t.timestamps
     end
   end

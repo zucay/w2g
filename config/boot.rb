@@ -11,7 +11,16 @@ module Rails
 		def default_options
 			super.merge({
 				:Port => 3011
-			})                     
-		end                                  
-	end                                    
-end                                      
+			})
+		end
+	end
+end
+
+
+module Paperclip
+  class UploadedFileAdapter
+    def inspect
+      '==='
+    end
+  end
+end

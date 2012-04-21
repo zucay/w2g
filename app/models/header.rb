@@ -29,10 +29,24 @@ class Header < ActiveRecord::Base
     end
     return out
   end
+  def col2label(str)
+    self["#{str}_label"]
+  end
+
   def active_column_names
     self.column_names.select do |col|
       self[col + '_active'] == true
     end
+  end
+  # label_name => col_name のハッシュを返却する
+  def labels
+    out = { }
+    self.column_names.each do |col|
+      if(col=~ /(.*)_label$/ && self[col].to_s != '')
+        out[self[col]] = $1
+      end
+    end
+    return out
   end
   # ラベル名=>実際のカラム名というハッシュを返却する
   def labels

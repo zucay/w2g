@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418031937) do
+ActiveRecord::Schema.define(:version => 20120419114752) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -75,6 +75,11 @@ ActiveRecord::Schema.define(:version => 20120418031937) do
 
   create_table "headers", :force => true do |t|
     t.string   "header_name"
+    t.boolean  "pic_active"
+    t.boolean  "pic_not_null"
+    t.string   "pic_label"
+    t.string   "pic_example"
+    t.string   "pic_desc"
     t.boolean  "name_active"
     t.boolean  "name_not_null"
     t.string   "name_label"
@@ -309,12 +314,34 @@ ActiveRecord::Schema.define(:version => 20120418031937) do
     t.datetime "updated_at"
   end
 
+  create_table "pics", :force => true do |t|
+    t.integer  "spot_id"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "client"
     t.integer  "header_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "rsssites", :force => true do |t|
+    t.string   "name"
+    t.string   "subname"
+    t.string   "url"
+    t.string   "parser_path"
+    t.datetime "lastcrawled_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "parser_name"
+    t.integer  "priority"
   end
 
   create_table "spots", :force => true do |t|

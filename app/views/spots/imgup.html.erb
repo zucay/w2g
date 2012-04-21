@@ -1,13 +1,17 @@
 <%= render 'header' %>
-<%= semantic_form_for @spot, :html=>{:multipart => true} do |f| %>
+<%= semantic_form_for @spot, :html=>{:multipart => true}, :url=>{:action => :img_update}, :method=>'post' do |f| %>
   この度はご協力
   <%= f.inputs do %>
 		<br />
 		STEP1. ご回答いただく方のお名前をご記入くださいませ。
-		<%= render :partial => 'caretaker', :locals =>{:f => f} %>
+
+			<%= render :partial => 'caretaker', :locals =>{:f => f} %>
+
 		<br />
 		STEP2. 
+
 		<%= render :partial => 'picform', :locals =>{:f => f} %>
+
 	<% end  %>
 
 	<%= f.buttons do %>

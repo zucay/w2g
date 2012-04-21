@@ -9,7 +9,9 @@ envvars = ['w2g_access_key_id', 'w2g_secret_access_key', 'w2g_bucket',
           ]
 not_found_envvars = []
 envvars.each do |var|
-  if(!ENV[var])
+  if(ENV[var])
+    p "ENV[var] : #{ENV[var]}"
+  else
     not_found_envvars << var
   end
 end
