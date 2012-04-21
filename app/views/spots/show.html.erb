@@ -1,7 +1,11 @@
+<%= render :partial => 'header', :locals=>{:current => 2} %>
+<br />
 <%= @spot.name %> 様　取材ご協力ありがとうございました。<br>
 <%= image_tag @spot.pic0.url(:small) if @spot.pic0.present? %>
 <%= image_tag @spot.pic1.url(:small) if @spot.pic0.present? %>
 <%= image_tag @spot.pic2.url(:small) if @spot.pic0.present? %>
 
 
-
+<br />
+<%= link_to '修正する', edit_spot_path %><br />
+<%= render 'footer' %>

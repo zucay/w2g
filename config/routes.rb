@@ -8,8 +8,10 @@ W2g::Application.routes.draw do
 
   resources :spots do 
     member do 
-      get :imgup
-      post :img_update
+      get :img
+      post :update_img
+      get :detail
+      post :update_detail
     end
   end
 

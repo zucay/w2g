@@ -1,7 +1,7 @@
 class CreateSpots < ActiveRecord::Migration
   def change
     info_col_num = 15
-    pic_num = 5
+
     create_table :spots do |t|
       t.string   "name"
       t.string   "yomi"
@@ -12,13 +12,7 @@ class CreateSpots < ActiveRecord::Migration
       t.string   "build_name"
       t.string   "tel"
       t.string   "tel_info"
-      pic_num.times do |i|
-        t.string "pic#{i}_file_name"
-        t.string "pic#{i}_content_type"
-        t.integer "pic#{i}_file_size"
-        t.datetime "pic#{i}_updated_at"
-      end
-      
+   
       
       t.integer  "lat_256jp"
       t.integer  "lng_256jp"

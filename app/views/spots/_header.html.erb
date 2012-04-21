@@ -6,5 +6,25 @@
 		<% pj_name = '施設情報' %>
 	<% end  %>
 	<%= pj_name  %> 取材シート : <%= @spot.name %>様
+	
+	
+	<p>
+		<% # パーシャル引数としてcurrent:integer を渡す  %>
+		<% routes = %w[＞＞１．ご回答者様・画像の登録　 ＞＞２．施設情報の登録　 ＞＞３．登録内容の確認　]  %>
+		<% urls = %w[img detail show]  %>
+		<h5>
+			<% routes.each_with_index do |ele, i|  %>
+				<% if i != current %>
+					<%= link_to routes[i], :action=>urls[i] %>
+				<% else ele == current  %>
+					<font color='red'><%= routes[i] %></font>
+  			<% end %>
+			<% end  %>
+		</h5>
+
+		<font color='grey'></font>
+	</p>
+
+
 </h3>
 

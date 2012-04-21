@@ -1,0 +1,22 @@
+<%= render :partial => 'header', :locals=>{:current => 0} %>
+
+<%= semantic_form_for @spot, :html=>{:multipart => true}, :url=>{:action => :update_img}, :method=>'post' do |f| %>
+  この度は取材ご協力いただきまして誠にありがとうございます。
+  <%= f.inputs do %>
+		<br />
+		STEP1. ご回答いただく方のお名前をご記入くださいませ。
+			<%= render :partial => 'caretaker', :locals =>{:f => f} %>
+		<br />
+		STEP2. 施設の写真がありましたら、アップロードをお願いいたします。
+
+		<%= render :partial => 'picform', :locals =>{:f => f} %>
+		<%= f.input :pic_info, :label => '写真利用時注意事項・権利者表示', :hint => '例：「写真は郵送いたします」「別途利用申請書を提出してください」「要クレジット：四谷観光協会」' %>
+
+	<% end  %>
+
+	<%= f.buttons do %>
+		<%= f.submit('情報を送信し、施設情報登録画面に進む') %>	(次の画面が表示されるまでウィンドウは閉じないようお願いいたします。)
+	<% end  %>
+	
+<% end  %>
+<%= render 'footer' %>

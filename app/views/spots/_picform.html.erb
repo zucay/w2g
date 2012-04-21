@@ -1,6 +1,9 @@
 <%= f.input :pic0, {:label => '画像1'} %>
+		　<%= image_tag @spot.pic0.url(:thumb) if @spot.pic0.present? %>
 <%= f.input :pic1, {:label => '画像2'} %>
+		　<%= image_tag @spot.pic1.url(:thumb) if @spot.pic1.present? %>
 <%= f.input :pic2, {:label => '画像3'} %>
+		　<%= image_tag @spot.pic2.url(:thumb) if @spot.pic2.present? %>
 
 
 

@@ -23,7 +23,7 @@ class Spot < ActiveRecord::Base
     :storage => :s3,
     :s3_credentials => W2g::Application.config.S3_CREDENTIALS, 
     :path => ":attachment/:id/:style.:extension",
-    :styles => {:small => ["128x128#", :png] },
+    :styles => {:small => ["128x128#", :png], :thumb => ["32x32#", :png] },
     :default_url => '/img/no_img.jpg',
   }
   has_attached_file :pic0, picset

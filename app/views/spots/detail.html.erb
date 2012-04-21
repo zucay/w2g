@@ -1,10 +1,11 @@
+<%= render :partial => 'header', :locals=>{:current => 1} %>
 <%= semantic_form_for @spot, :html=>{:multipart => true} do |f| %>
   <%= f.inputs do %>
     <% # アクティブカラムに応じたフォームの自動生成  %>
 	  <% @spot.active_column_names.each do |col_name| %>
 		  <% opts = {}  %>
-      <% if(col_name =~ /^pic/)  %>
-  			<% opts[:as] = :file %>
+      <% if(col_name =~ /pic\d/)  %>
+  			<% next %>
 			<% end  %>
 			<% opts[:label] = @spot.header[col_name + '_label'] %>
 			<% opts[:hint] = @spot.header.hint(col_name) %>
@@ -12,15 +13,20 @@
 			<% if(@spot.header.not_null?(col_name)) %>
 			  <% opts[:required] = true  %>
 			<% end  %>
-			
+
 			<%= f.input col_name.to_sym, opts %>
 		<% end  %>
 
 
 	<% end  %>
 
-	<%= f.buttons %>
+	<%= f.buttons do %>
+		<%= f.submit('情報を送信する') %>	(次の画面が表示されるまでウィンドウは閉じないようお願いいたします。)
+	<% end  %>
+
 <% end  %>
 
 
 
+
+<%= render 'footer' %>
