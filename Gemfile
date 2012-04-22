@@ -12,6 +12,8 @@ gem 'activeadmin', '0.4.2'
 gem 'inherited_resources'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'show_for'
+gem 'twitter-bootstrap-rails'
 group :test do
 			gem 'rspec-rails'
 end

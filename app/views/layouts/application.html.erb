@@ -1,14 +1,18 @@
+<!-- UTF-8 のファイル形式です。-->
 <!DOCTYPE html>
 <html>
 <head>
-  <title>W2g</title>
+  <title>観光情報取材システム</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="continer">
+	<div class="span">
+		<%= yield %>
+	</div>
 
-<%= yield %>
-
+</div>
 </body>
 </html>
