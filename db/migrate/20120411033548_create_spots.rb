@@ -39,7 +39,9 @@ class CreateSpots < ActiveRecord::Migration
         t.string "info_#{i}"
       end
 
-
+      t.string   "ext_id"
+      t.integer  "linenum"
+      
       # relation
       t.integer  "user_id"
       t.integer  "caretaker_id"
@@ -51,8 +53,7 @@ class CreateSpots < ActiveRecord::Migration
       t.boolean  "checked"
       t.boolean  "caretaker_inputed"
       t.boolean  "deny", :default => false
-      t.string   "ext_id"
-      t.integer  "linenum"
+
       t.boolean  "active"
       t.integer  "gid"
       t.timestamps

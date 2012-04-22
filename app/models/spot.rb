@@ -11,6 +11,7 @@ class Spot < ActiveRecord::Base
   #callbacks
   #before_create :build_relation
   after_initialize :build_relation
+  before_update :add_update_flg
 
   # validations
   validates_presence_of :name, :on => :update, :message => '名称は必ず入力してください'
@@ -38,6 +39,9 @@ class Spot < ActiveRecord::Base
     self.project ||= Project.new
     self.caretaker ||= Caretaker.new
   end
+  def add_update_flg
+    self.caretaker_inputed = true
+  end
 
   # public instance methods
   def active_column_names
@@ -46,10 +50,25 @@ class Spot < ActiveRecord::Base
   def header
     self.project.header
   end
+  def set(label, val)
+    label_cols = self.header.label_cols
+    colname = label_cols[label]
+    if(colname)
+      self[colname] = val
+    else
+      if(label =~ /caretaker_(.*)/)
+        self.caretaker ||= Caretaker.new
+        self.caretaker[$1] = val
+      end
+      p "Label not found:#{label}"
+    end
+  end
   
   # public class methods
-  def self.load(file)
-    ValLoader.load(file)
+  def self.load(pj_name, file)
+    pj = Project.find_by_name(pj_name)
+    p pj.name
+    ValLoader.load(file, pj)
   end
   # tmp methods
 

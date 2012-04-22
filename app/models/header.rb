@@ -3,17 +3,19 @@ class Header < ActiveRecord::Base
   has_many :projects
 
   def hint(col_name)
-    example = ''
-    if(self[col_name + '_example'].to_s != '')
-      example = "例：#{self[col_name + '_example']}　|　"
-    end
-
-    out = example + self[col_name + '_desc'].to_s
-
+    out = []
+    # 必須
     if(not_null?(col_name))
-      out = out + " ※必須"
+      out << " ※必須"
     end
-    return out
+    # 説明
+    out << self[col_name + '_desc'].to_s
+    # 例
+    if(self[col_name + '_example'].to_s != '')
+      out << "例：#{self[col_name + '_example']}"
+    end
+    out.delete('')
+    return out.join(' | ')
   end
   def not_null?(col_name)
     return self[col_name + '_not_null']
@@ -34,20 +36,25 @@ class Header < ActiveRecord::Base
   end
 
   def active_column_names
-    self.column_names.select do |col|
+    out = self.column_names.select do |col|
       self[col + '_active'] == true
     end
+    out.delete('pic')
+    return out
   end
+
   # label_name => col_name のハッシュを返却する
-  def labels
-    out = { }
+  def label_cols
+    out ={ }
     self.column_names.each do |col|
-      if(col=~ /(.*)_label$/ && self[col].to_s != '')
-        out[self[col]] = $1
+      label_col = col + '_label'
+      if(self[label_col] && self[label_col].to_s != '')
+        out[self[label_col]] = col
       end
     end
     return out
   end
+
   # ラベル名=>実際のカラム名というハッシュを返却する
   def labels
     out = { }
