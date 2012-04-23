@@ -20,7 +20,7 @@ W2g::Application.routes.draw do
   resources :notes
   resources :caretakers
   
-  match '/:id', :to => 'spots#edit'
+  match '/:id', :to => 'spots#img'
 
 
   # The priority is based upon order of creation:
