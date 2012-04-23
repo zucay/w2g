@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120419114752) do
+ActiveRecord::Schema.define(:version => 20120423014943) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -314,16 +314,6 @@ ActiveRecord::Schema.define(:version => 20120419114752) do
     t.datetime "updated_at"
   end
 
-  create_table "pics", :force => true do |t|
-    t.integer  "spot_id"
-    t.string   "pic_file_name"
-    t.string   "pic_content_type"
-    t.integer  "pic_file_size"
-    t.datetime "pic_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "client"
@@ -419,6 +409,7 @@ ActiveRecord::Schema.define(:version => 20120419114752) do
     t.integer  "gid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "memo"
   end
 
 end

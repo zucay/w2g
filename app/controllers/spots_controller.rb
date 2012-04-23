@@ -1,18 +1,5 @@
 # -*- coding: utf-8 -*-
 class SpotsController < InheritedResources::Base
-  def self.myforce_encode(hash)
-    out = { }
-    hash.each_pair do  |k,v|
-      if(v.class == Hash)
-        out[k] = force_encode(v)
-      elsif
-        out[k] = v.force_encoding('UTF-8')
-      else
-        out[k] = v
-      end
-    end
-    return out
-  end
   def img
     edit
   end

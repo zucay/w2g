@@ -1,23 +1,23 @@
+
 <%= render :partial => 'header', :locals=>{:current => 1} %>
 <%= semantic_form_for @spot, :html=>{:multipart => true} do |f| %>
   <%= f.inputs do %>
-    <% # アクティブカラムに応じたフォームの自動生成  %>
-	  <% @spot.active_column_names.each do |col_name| %>
+		※備考・連絡事項等ございましたら、最下部「通信欄」にご記入くださいませ。
+		<% # アクティブカラムに応じたフォームの自動生成  %>
+		<% @spot.active_column_names.each do |col_name| %>
 		  <% opts = {}  %>
       <% if(col_name =~ /pic\d/)  %>
-  			<% next %>
-			<% end  %>
-			<% opts[:label] = @spot.header[col_name + '_label'] %>
-			<% opts[:hint] = @spot.header.hint(col_name) %>
-
+  		  <% next %>
+		  <% end  %>
+  		<% opts[:label] = @spot.header[col_name + '_label'] %>
+  		<% opts[:hint] = @spot.header.hint(col_name) %>
+			
 			<% if(@spot.header.not_null?(col_name)) %>
 			  <% opts[:required] = true  %>
-			<% end  %>
-
-			<%= f.input col_name.to_sym, opts %>
-		<% end  %>
-
-
+  	  <% end  %>
+			  <%= f.input col_name.to_sym, opts %>
+    <% end  %>
+    <%= f.input :memo, :label => "通信欄" %>  
 	<% end  %>
 
 	<%= f.buttons do %>

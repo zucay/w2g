@@ -7,7 +7,9 @@ class Spot < ActiveRecord::Base
   accepts_nested_attributes_for :caretaker
   has_many :communications
   accepts_nested_attributes_for :communications
-
+  belongs_to :note
+  accepts_nested_attributes_for :note
+  
   #callbacks
   #before_create :build_relation
   after_initialize :build_relation

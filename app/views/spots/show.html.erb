@@ -1,6 +1,7 @@
 <%= render :partial => 'header', :locals=>{:current => 2} %>
 <br />
 <%= @spot.name %> 様　取材ご協力ありがとうございました。<br />
+下記の通り登録されております。ご確認くださいませ。
 <%= link_to '修正する', edit_spot_path %><br />
 
 <p>
@@ -11,7 +12,7 @@
 <% end  %>
 </p>
 
-画像</br>
+登録画像</br>
 <%= image_tag @spot.pic0.url(:small) if @spot.pic0.present? %>
 <%= image_tag @spot.pic1.url(:small) if @spot.pic0.present? %>
 <%= image_tag @spot.pic2.url(:small) if @spot.pic0.present? %>
