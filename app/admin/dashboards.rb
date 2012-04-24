@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 ActiveAdmin::Dashboards.build do
 
   # Define your dashboard sections here. Each block will be
@@ -5,13 +6,38 @@ ActiveAdmin::Dashboards.build do
   # return the content which you would like to display.
 
   section "Recent Projects" do
-    ul do
-      Project.last(5).collect do |pj|
-        li do 
-          link_to("#{pj.name} (#{pj.spots.size})", admin_project_path(pj))
-
+    table do
+      tr do
+        th do
+          '名称'
         end
+        th do
+          'PU件数'
+        end
+        th do
+          '回答あり件数'
+        end
+        th do
+          '拒否軒数'
+        end
+      end
 
+      Project.all.collect do |pj|
+        tr do
+          td do
+            link_to("#{pj.name}", admin_spots_path)
+          end
+
+          td do
+            pj.spots.size
+          end
+          td do
+            pj.spots.inputed.size
+          end
+          td do
+            pj.spots.deny.size
+          end
+        end
       end
     end
   end

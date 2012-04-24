@@ -20,6 +20,7 @@ class Spot < ActiveRecord::Base
   validates_format_of :yomi, :on => :update, :with => /^[ァ-タダ-ヶ　ー]*$/, :message => 'ヨミガナは全角カタカナのみで、入力してください'
   validates_format_of :tel, :on => :update, :with => /^[0-9\-]*$/, :message => '電話番号は半角数字で入力してください'
   validates_format_of :pref, :on => :update, :with => /[都道府県]{0,1}$/, :message => '都道府県名のみ入力してください'
+  
 
   # other settings
   picset = {
@@ -34,6 +35,11 @@ class Spot < ActiveRecord::Base
   has_attached_file :pic2, picset
   has_attached_file :pic3, picset
   has_attached_file :pic4, picset
+
+  # scope
+  scope :deny, where(:deny => true)
+  scope :inputed, where(:caretaker_inputed => true, :deny => !true)
+
 
   #callback methods
   def build_relation
