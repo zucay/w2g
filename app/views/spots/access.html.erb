@@ -68,8 +68,13 @@
 ジオコーダ住所：　　<div id="search-result" ></div>
 <%= semantic_form_for @spot do |f| %>
   <%= f.inputs do %>
-		<% %w[pref addr access_train access_car lat_world lng_world].each do |ele| %>
-			<%= f.input ele.to_sym, {:label => ele} %>
+		
+		<% %w[pref addr access_train access_car lat_world lng_world url].each do |col_name| %>
+			<% opts = {}  %>
+			<% opts[:label] = @spot.header[col_name + '_label'] %>
+			<% opts[:hint] = @spot.header.hint(col_name) %>
+
+			<%= f.input col_name.to_sym, opts %>
 		<% end  %>
 	<% end  %>
 
