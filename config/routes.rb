@@ -12,6 +12,8 @@ W2g::Application.routes.draw do
       post :update_img
       get :detail
       post :update_detail
+      get :access
+      put :update_access
     end
   end
 

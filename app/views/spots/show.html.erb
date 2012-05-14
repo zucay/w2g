@@ -3,6 +3,15 @@
 <%= @spot.name %> 様　取材ご協力ありがとうございました。<br />
 下記の通り登録されております。ご確認くださいませ。
 <%= link_to '修正する', edit_spot_path %><br />
+<%= link_to @spot.pic0.url do  %>
+	<%= image_tag @spot.pic0.url(:small) %>
+<% end  %>
+<%= link_to @spot.pic1.url do  %>
+	<%= image_tag @spot.pic1.url(:small) %>
+<% end  %>
+<%= link_to @spot.pic2.url do  %>
+	<%= image_tag @spot.pic2.url(:small) %>
+<% end  %>
 
 <p>
 <%= show_for @spot do |f| %>
@@ -12,10 +21,6 @@
 <% end  %>
 </p>
 
-登録画像</br>
-<%= image_tag @spot.pic0.url(:small) if @spot.pic0.present? %>
-<%= image_tag @spot.pic1.url(:small) if @spot.pic0.present? %>
-<%= image_tag @spot.pic2.url(:small) if @spot.pic0.present? %>
 
 
 <br />

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+require 'fileutils'
 require 'loader'
 class Spot < ActiveRecord::Base
   # relations
@@ -71,13 +72,43 @@ class Spot < ActiveRecord::Base
       p "Label not found:#{label}"
     end
   end
-  
+  def has_img?
+    5.times do |i|
+      # todo implementation
+    end
+  end
+
   # public class methods
   def self.load(pj_name, file)
     pj = Project.find_by_name(pj_name)
     p pj.name
     ValLoader.load(file, pj)
   end
-  # tmp methods
+  def self.backup_img(path = 'images')
+    require 'open-uri'
+    self.all.each do |sp|
+      [sp.pic0, sp.pic1, sp.pic2].each do |pic|
+        if(pic.path)
+          read_path = pic.to_s.gsub(/w2g-development/, 'w2g-production')
+          begin
+            open(read_path, 'rb') do |fi|
+              write_path = "#{path}/#{pic.path}"
+              dir = File.dirname(write_path)
+              FileUtils.mkdir_p(dir)
+              
+              fo = open(write_path, 'wb')
+              fo.write(fi.read)
+              fo.close
+            end
+          rescue => e
+            p e
+          end
+        end
+      end
+    end
+  end
+  def self.stat(pj_name)
 
+  end
+  # tmp methods
 end
