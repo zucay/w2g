@@ -1,8 +1,10 @@
 <%= render :partial => 'header', :locals=>{:current => 2} %>
+
+
 <br />
 <%= @spot.name %> 様　取材ご協力ありがとうございました。<br />
 下記の通り登録されております。ご確認くださいませ。
-<%= link_to '修正する', edit_spot_path %><br />
+<%= link_to '修正する', edit_spot_path %><br /><br />
 <%= link_to @spot.pic0.url do  %>
 	<%= image_tag @spot.pic0.url(:small) %>
 <% end  %>
@@ -25,4 +27,5 @@
 
 <br />
 <%= link_to '修正する', edit_spot_path %><br />
+<%= link_to '.', access_spot_path %>
 <%= render 'footer' %>
