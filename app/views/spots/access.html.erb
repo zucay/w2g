@@ -57,11 +57,11 @@
 	  //marker
 	  marker = new Y.Marker(new Y.LatLng(lat, lng));
 	  marker.setDraggable(true);
-	  ymap.addFeature(marker);
 	  marker.bind('dragend', function(){
       $('#spot_lat_world')[0].value = String(this.getLatLng().lat());
       $('#spot_lng_world')[0].value = String(this.getLatLng().lng());
 	  });
+  	ymap.addFeature(marker);
 	}
 
 
