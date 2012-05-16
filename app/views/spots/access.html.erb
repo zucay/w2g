@@ -70,7 +70,7 @@
 <%= semantic_form_for @spot do |f| %>
   <%= f.inputs do %>
 		
-		<% %w[pref addr access_train access_car lat_world lng_world url].each do |col_name| %>
+		<% %w[pref addr access_train access_car lat_world lng_world url info_0].each do |col_name| %>
 			<% opts = {}  %>
 			<% opts[:label] = @spot.header[col_name + '_label'] %>
 			<% opts[:hint] = @spot.header.hint(col_name) %>
