@@ -40,7 +40,7 @@ class Spot < ActiveRecord::Base
   # scope
   scope :deny, where(:deny => true)
   scope :inputed, where(:caretaker_inputed => true, :deny => !true)
-
+  scope :active, where(:active => true, :deny => !true)
 
   #callback methods
   def build_relation
@@ -78,6 +78,36 @@ class Spot < ActiveRecord::Base
     end
   end
 
+  def save_img(pic_id = nil, filename = nil)
+    pic_id ||= self.main_pic_id
+    pic_id ||= 0
+    p pic_id
+    filename ||= "#{self.name}_#{pic_id}"
+    require 'open-uri'
+    pic = self.send("pic#{pic_id}")
+
+    read_path = pic.to_s.gsub(/w2g-development/, 'w2g-production')
+    write_path = "images/#{filename}#{File.extname(pic.path)}"
+    dir = File.dirname(write_path)
+    FileUtils.mkdir_p(dir)
+    begin
+      open(read_path, 'rb') do |fi|
+        fo = open(write_path, 'wb')
+        fo.write(fi.read)
+        fo.close
+      end
+    rescue => e
+      p e
+    end
+  end
+  def tky2jgd
+    Geoutil.ipc2jgd([self])
+  end
+  def jgd2tky
+    Geoutil.jgd2ipc([self])
+  end
+
+
   # public class methods
   def self.load(pj_name, file)
     pj = Project.find_by_name(pj_name)
@@ -95,7 +125,6 @@ class Spot < ActiveRecord::Base
               write_path = "#{path}/#{pic.path}"
               dir = File.dirname(write_path)
               FileUtils.mkdir_p(dir)
-              
               fo = open(write_path, 'wb')
               fo.write(fi.read)
               fo.close
@@ -107,6 +136,7 @@ class Spot < ActiveRecord::Base
       end
     end
   end
+
   def self.stat(pj_name)
 
   end
