@@ -1,0 +1,17 @@
+
+<title>観光情報ギャラリー</title>
+観光情報ギャラリー
+
+<h2><%= Date.today.month %>月の季節特集「<%= resource.name %>」100選</h2>
+<% resource.spots.active.each_with_index do |sp, i|  %>
+	<% if i%4 == 0  %>
+		<br>		<br>
+	<% end  %>
+
+	<%= link_to sp do  %>
+		<%= image_tag sp.pic0.url(:small) %>
+		 
+	<% end  %>
+
+<% end  %>
+
