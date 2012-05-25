@@ -27,10 +27,19 @@ class Pointing
       _ll = this.getLatLng()
       $('div.lat').text(_ll.lat())
       $('div.lng').text(_ll.lng())
-#      _cv = new DatumConvert()
-#      _cv.convertToTky(_ll, ->
-#        alert(this.getLatLng())
-#      )
+      _cv = new Y.DatumConvert()
+      _cv.convertToTky(_ll, (ydf) ->
+        _jpll = ydf.features[0].getLatLng()
+        $('div.lat_jp').text(_jpll.lat())
+        $('div.lng_jp').text(_jpll.lng())
+        $('div.lat_256jp').text(parseInt(_jpll.lat() * 3600 * 256))
+        $('div.lng_256jp').text(parseInt(_jpll.lng() * 3600 * 256))
+        $('div.lat_1000jp').text(parseInt(_jpll.lat() * 3600 * 1000))
+        $('div.lng_1000jp').text(parseInt(_jpll.lng() * 3600 * 1000))
+
+      )
+
+
       return
     )
 
