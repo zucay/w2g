@@ -21,6 +21,7 @@ W2g::Application.routes.draw do
   resources :headers
   resources :notes
   resources :caretakers
+  match '/pointing', :to => 'pointing#index'
   
   match '/:id', :to => 'spots#img'
 
