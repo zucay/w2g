@@ -93,8 +93,14 @@ class Pointing
       else
         _ll = new Y.LatLng(_ll_raw[0], _ll_raw[1])
         window.pt.setLatLng(_ll)
-#    @map.panTo(_ll)
-#    setLatLng(_ll)
+    return
+  openGmap: ->
+    _url = 'https://maps.google.co.jp/maps?hl=ja&q=' + $('input.latlng')[0].value
+    window.open(_url, "new", "width=1024,height=600" )
+    return
+  openItsmo: ->
+    _url = 'http://www.its-mo.com/map/detail/' + $('input.latlng_1000jp')[0].value.replace(",", "_") + '_16'
+    window.open(_url, "new", "width=1024,height=800" )
     return
 
 window.onload = ->
