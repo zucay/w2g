@@ -5,17 +5,21 @@ class Pointing
   constructor: (div_id) ->
     #地図を初期化
     @map = new Y.Map(div_id, {
-      configure :{doubleClickPan : true}
+      configure :{
+        doubleClickPan : true,
+        scrollWheelZoom : true
+      }
     })
 
     #コントロールの追加
-    @map.addControl(new Y.LayerSetControl())
-    @map.addControl(new Y.ZoomControl())
-    #map.addControl(new Y.CenterMarkControl())
-    @map.addControl(new Y.ScaleControl())
+    #@map.addControl(new Y.LayerSetControl())
+    #@map.addControl(new Y.ZoomControl())
+    #@map.addControl(new Y.CenterMarkControl())
     @map.addControl(new Y.SearchControl())
+    @map.addControl(new Y.SliderZoomControlVertical())
 
     #地図を表示
+    @map.setLayerSetId(Y.LayerSetId.NORMAL);
     @map.drawMap(new Y.LatLng(35.665627,139.730738), 18,Y.LayerSetId.NORMAL)
     return
 
@@ -25,35 +29,25 @@ class Pointing
     _marker.setDraggable(true)
     _marker.bind('dragend', ->
       _ll = this.getLatLng()
-      $('div.lat').text(_ll.lat())
-      $('div.lng').text(_ll.lng())
+      #@map.drawMap(_ll, getZoom())
+      $('input.latlng')[0].value = _ll.lat() + ', '+ _ll.lng()
+
       _cv = new Y.DatumConvert()
       _cv.convertToTky(_ll, (ydf) ->
         _jpll = ydf.features[0].getLatLng()
-        $('div.lat_jp').text(_jpll.lat())
-        $('div.lng_jp').text(_jpll.lng())
-        $('div.lat_256jp').text(parseInt(_jpll.lat() * 3600 * 256))
-        $('div.lng_256jp').text(parseInt(_jpll.lng() * 3600 * 256))
-        $('div.lat_1000jp').text(parseInt(_jpll.lat() * 3600 * 1000))
-        $('div.lng_1000jp').text(parseInt(_jpll.lng() * 3600 * 1000))
+        _latlng_jp = _jpll.lat() + ', ' + _jpll.lng()
+        _latlng_256jp = parseInt(_jpll.lng()*3600*256) + ', ' + parseInt(_jpll.lat()*3600*256)
+        _latlng_1000jp = parseInt(_jpll.lat()*3600*1000) + ', ' + parseInt(_jpll.lng()*3600*1000)
 
+        $('input.latlng_jp')[0].value = _latlng_jp
+        $('input.latlng_256jp')[0].value = _latlng_256jp
+        $('input.latlng_1000jp')[0].value = _latlng_1000jp
       )
-
-
       return
     )
 
-
-
-
     @map.addFeature(_marker)
     return _marker
-
-  marker_move: ->
-    alert('hoge')
-    #_ll = this.getLatLng()
-    #alert(_ll)
-
 
 window.onload = ->
   a = new Pointing("ymap")
