@@ -12,47 +12,55 @@ class Pointing
     })
 
     #コントロールの追加
-    #@map.addControl(new Y.LayerSetControl())
-    #@map.addControl(new Y.ZoomControl())
-    #@map.addControl(new Y.CenterMarkControl())
+    @map.addControl(new Y.CenterMarkControl())
     @map.addControl(new Y.SearchControl())
-    @map.addControl(new Y.SliderZoomControlVertical())
+    @map.addControl(new Y.SliderZoomControlHorizontal())
 
     #地図を表示
-    @map.setLayerSetId(Y.LayerSetId.NORMAL);
     @map.drawMap(new Y.LatLng(35.665627,139.730738), 18,Y.LayerSetId.NORMAL)
     return
 
   addMarker: ->
     #マーカーの追加
-    _marker = new Y.Marker(@map.getCenter())
-    _marker.setDraggable(true)
-    _marker.bind('dragend', ->
-      _ll = this.getLatLng()
-      #@map.drawMap(_ll, getZoom())
-      $('input.latlng')[0].value = _ll.lat() + ', '+ _ll.lng()
+    if(@marker)
+      @map.removeFeature(@marker)
+    @marker = new Y.Marker(@map.getCenter())
+    this.setLatLng(@map.getCenter())
 
-      _cv = new Y.DatumConvert()
-      _cv.convertToTky(_ll, (ydf) ->
-        _jpll = ydf.features[0].getLatLng()
-        _latlng_jp = _jpll.lat() + ', ' + _jpll.lng()
-        _latlng_256jp = parseInt(_jpll.lng()*3600*256) + ', ' + parseInt(_jpll.lat()*3600*256)
-        _latlng_1000jp = parseInt(_jpll.lat()*3600*1000) + ', ' + parseInt(_jpll.lng()*3600*1000)
-
-        $('input.latlng_jp')[0].value = _latlng_jp
-        $('input.latlng_256jp')[0].value = _latlng_256jp
-        $('input.latlng_1000jp')[0].value = _latlng_1000jp
-      )
+    @marker.setDraggable(true)
+    @marker.pt = this
+    @marker.bind('dragend', ->
+      this.pt.setLatLng(this.getLatLng())
       return
     )
+    @map.addFeature(@marker)
 
-    @map.addFeature(_marker)
-    return _marker
+    return @marker
+
+  setLatLng: (_ll) ->
+    #引数_ll の座標値をinputタグに流しこむ
+    $('input.latlng')[0].value = _ll.lat() + ', '+ _ll.lng()
+
+    _cv = new Y.DatumConvert()
+    _cv.convertToTky(_ll, (ydf) ->
+      _jpll = ydf.features[0].getLatLng()
+      _latlng_jp = _jpll.lat() + ', ' + _jpll.lng()
+      _latlng_256jp = parseInt(_jpll.lng()*3600*256) + ', ' + parseInt(_jpll.lat()*3600*256)
+      _latlng_1000jp = parseInt(_jpll.lat()*3600*1000) + ', ' + parseInt(_jpll.lng()*3600*1000)
+
+      $('input.latlng_jp')[0].value = _latlng_jp
+      $('input.latlng_256jp')[0].value = _latlng_256jp
+      $('input.latlng_1000jp')[0].value = _latlng_1000jp
+      return
+    )
+    return
+
+
 
 window.onload = ->
-  a = new Pointing("ymap")
-  a.addMarker()
-
+  window.pt = new Pointing("ymap")
+  window.pt.addMarker()
+  return
 
 
 
