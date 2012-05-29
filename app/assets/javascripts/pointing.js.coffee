@@ -21,7 +21,8 @@ class Pointing
 
     #座標変換オブジェクト
     @cv = new Y.DatumConvert()
-
+    #ジオコーダオブジェクト
+    @gc = new Y.GeoCoder()
     #自分をwindowに登録
     window.pt = this
     return
@@ -40,14 +41,11 @@ class Pointing
       return
     )
     @map.addFeature(@marker)
-
     return @marker
 
   setLatLng: (_ll) ->
     #引数_ll の座標値をinputタグに流しこむ
     $('input.latlng')[0].value = _ll.lat() + ','+ _ll.lng()
-
-
     @cv.convertToTky(_ll, (ydf) ->
       _jpll = ydf.features[0].getLatLng()
       _latlng_jp = _jpll.lat() + ',' + _jpll.lng()
@@ -60,6 +58,12 @@ class Pointing
       return
     )
     @map.panTo(_ll, true)
+    # 座標値から住所を検索する
+    @gc.execute({"latlng":_ll}, (ydf) ->
+      _addr = ydf.features[0].property.Address
+      $('input.addr')[0].value = _addr
+    )
+
     return
 
   moveTo: (_type) ->
@@ -131,7 +135,14 @@ class Pointing
     _url = 'http://www.mapion.co.jp/m/' + $('input.latlng_jp')[0].value.replace(",", "_") + '_10'
     window.open(_url, "new", "width=1024,height=800" )
     return
-
+  copy: (_type) ->
+    # IEでしか動作しない
+    _tag = 'input.' + _type
+    _str = $(_tag)[0].value
+    _str = _str.replace(",", "\t")
+    window.clipboardData.setData("Text", _str)
+    alert('コピーしました:\n' + _str)
+    return
 window.onload = ->
   window.pt = new Pointing("ymap")
   window.pt.addMarker()
