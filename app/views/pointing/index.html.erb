@@ -1,25 +1,33 @@
 座標値取得システム
 <div id="ymap" style="width:85%; height:480px"></div>
 <input type="button" name="centermarker" value="マーカーを画面中心に移動する" onclick="pt.addMarker();">
+<!--
 <input type="button" name="goto_gmap" value="マーカー位置をGoogleMapで見る" onclick="pt.openGmap();">
+<input type="button" name="goto_mapfan" value="マーカー位置をMapfanで見る" onclick="pt.openMapfan();">
+<input type="button" name="goto_mapion" value="マーカー位置をマピオンで見る" onclick="pt.openMapion();">
 <input type="button" name="goto_mapfan" value="マーカー位置をいつもナビで見る" onclick="pt.openItsmo();">
+-->
 <br><br>
 
+<img src="img/s_google.png" onclick="pt.openGmap();">
 【世】界測地系 deg:float【緯度・経度】<br>
 <input type="text" class="latlng" style="width:300px;"></input>
 <input type="button" name="geo" value="←この座標に移動する" onclick="pt.moveTo('latlng')">
 <br><br>
 
+<img src="img/s_mapfan.png" style="width:24px" onclick="pt.openMapfan();">
 【日】本測地系 1/<strong>256</strong>sec:integer【<strong>経度・緯度</strong>】<br>
 <input type="text" class="latlng_256jp" style="width:300px;"></input>
 <input type="button" name="geo" value="←この座標に移動する" onclick="pt.moveTo('latlng_256jp')">
 <br><br>
 
+<img src="img/s_mapion.png" onclick="pt.openMapion();">
 【日】本測地系 deg:float【緯度・経度】<br>
 <input type="text" class="latlng_jp" style="width:300px;"></input>
 <input type="button" name="geo" value="←この座標に移動する" onclick="pt.moveTo('latlng_jp')">
 <br><br>
 
+<img src="img/s_itsmo.png" onclick="pt.openItsmo();">
 【日】本測地系 1/<strong>1000</strong>sec:integer【緯度・経度】<br>
 <input type="text" class="latlng_1000jp" style="width:300px;"></input>
 <input type="button" name="geo" value="←この座標に移動する" onclick="pt.moveTo('latlng_1000jp')">

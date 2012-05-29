@@ -94,12 +94,41 @@ class Pointing
         _ll = new Y.LatLng(_ll_raw[0], _ll_raw[1])
         window.pt.setLatLng(_ll)
     return
+
+  deg2dms: (_deg) ->
+    _sf = Math.round(_deg * 360000)
+    _s  = Math.floor(_sf / 100) % 60
+    _m  = Math.floor(_sf / 6000) % 60
+    _d = Math.floor(_sf / 360000)
+    _sf %= 100;
+    if (_m  < 10)
+      _m  = "0" + _m
+    if (_s  < 10)
+      _s  = "0" + _s
+    if (_sf < 10)
+      _sf = "0" + _sf
+    _dms = "" + _d + '.' + _m  + '.' + _s + "." + _sf
+    return _dms
+
   openGmap: ->
-    _url = 'https://maps.google.co.jp/maps?hl=ja&q=' + $('input.latlng')[0].value
+    _url = 'https://maps.google.co.jp/maps?hl=ja&q=' + $('input.latlng')[0].value + '&z=18'
     window.open(_url, "new", "width=1024,height=600" )
     return
+  openMapfan: ->
+    _ll = $('input.latlng_256jp')[0].value.split(",")
+    _lat_jp = parseInt(_ll[1]) / (256 * 3600)
+    _lng_jp = parseInt(_ll[0]) / (256 * 3600)
+    _lat = this.deg2dms(_lat_jp)
+    _lng = this.deg2dms(_lng_jp)
+    _url = 'http://www.mapfan.com/m.cgi?ZM=13&NFLG=1&MAP=E' + _lng + 'N' + _lat
+    window.open(_url, "new", "width=1024,height=800" )
+    return
   openItsmo: ->
-    _url = 'http://www.its-mo.com/map/detail/' + $('input.latlng_1000jp')[0].value.replace(",", "_") + '_16'
+    _url = 'http://www.its-mo.com/map/detail/' + $('input.latlng_1000jp')[0].value.replace(",", "_")
+    window.open(_url, "new", "width=1024,height=800" )
+    return
+  openMapion: ->
+    _url = 'http://www.mapion.co.jp/m/' + $('input.latlng_jp')[0].value.replace(",", "_") + '_10'
     window.open(_url, "new", "width=1024,height=800" )
     return
 
