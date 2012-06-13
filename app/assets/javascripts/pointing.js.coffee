@@ -15,6 +15,7 @@ class Pointing
     @map.addControl(new Y.CenterMarkControl())
     @map.addControl(new Y.SearchControl())
     @map.addControl(new Y.SliderZoomControlHorizontal())
+    @map.addControl(new Y.LayerSetControl())
 
     #地図を表示
     @map.drawMap(new Y.LatLng(35.665627,139.730738), 18,Y.LayerSetId.NORMAL)
