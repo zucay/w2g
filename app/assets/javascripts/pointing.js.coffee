@@ -144,10 +144,3 @@ class Pointing
     window.clipboardData.setData("Text", _str)
     alert('コピーしました:\n' + _str)
     return
-window.onload = ->
-  window.pt = new Pointing("ymap")
-  window.pt.addMarker()
-  return
-
-
-
