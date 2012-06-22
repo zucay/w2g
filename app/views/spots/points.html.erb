@@ -1,13 +1,18 @@
 <script type="text/javascript">
 <!--
 window.onload = function(){
-  window.map = new window.MyMap('map');
+  window.map = new window.MyMap("wFI47HGxg66Jhrcx2E42gSoytx.yIL8xevVCSzdb6JbScNObmUmPVI1H_auIwg--", 'map');
 };
 //-->
 </script>
-距離：<input type="text" class="distance" style="width:300px;"></input>
-<input type="button" name="countDistance" value="距離計測" onclick="ds.countDistance('distance');">
-<input type="button" name="save" value="SAVE" onclick="window.map.savePoints();">
-<input type="button" name="addMarker" value="addMarker" onclick="window.map.addMarker();">
-<input type="button" name="hoge" value="hoge" onclick="hoge();">
+距離：<input type="text" class="distance" style="width:60px;"></input>km
+<input type="button" name="countDistance" value="距離計測" onclick="window.map.getDistanceFromMarker('input.distance');"><br>
+
+</script>
+座標：<input type="text" class="latlng" style="width:300px;"></input>
+<input type="button" value="←この座標に移動" onclick="window.map.panTo('input.latlng');"><br>
+
+<input type="button" name="save" value="SAVE(x)" onclick="window.map.savePoints();">
+<input type="button" value="addMarker" onclick="window.map.addMarker();">
+<input type="button" name="debug" value="debug" onclick="window.map.getMarkers();">
 <div id="map" style="width:95%; height:480px"></div>
