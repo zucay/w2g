@@ -87,7 +87,7 @@ class DistanceMap extends MyMap
     )
     return
 
-    addMarker:(latlng = null) =>
+  addMarker:(latlng = null) =>
     super(latlng)
     this.getDistanceFromMarker('input.distance')
     return
