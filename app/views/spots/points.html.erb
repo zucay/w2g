@@ -1,0 +1,13 @@
+<script type="text/javascript">
+<!--
+window.onload = function(){
+  window.map = new window.MyMap('map');
+};
+//-->
+</script>
+距離：<input type="text" class="distance" style="width:300px;"></input>
+<input type="button" name="countDistance" value="距離計測" onclick="ds.countDistance('distance');">
+<input type="button" name="save" value="SAVE" onclick="window.map.savePoints();">
+<input type="button" name="addMarker" value="addMarker" onclick="window.map.addMarker();">
+<input type="button" name="hoge" value="hoge" onclick="hoge();">
+<div id="map" style="width:95%; height:480px"></div>

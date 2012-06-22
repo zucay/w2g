@@ -14,6 +14,7 @@ W2g::Application.routes.draw do
       post :update_detail
       get :access
       put :update_access
+      get :points
     end
   end
 
