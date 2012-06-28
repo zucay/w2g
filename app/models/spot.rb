@@ -41,6 +41,9 @@ class Spot < ActiveRecord::Base
   scope :deny, where(:deny => true)
   scope :inputed, where(:caretaker_inputed => true, :deny => !true)
   scope :active, where(:active => true, :deny => !true)
+  scope :good, lambda {
+    active.where('about_body is not null and pic0_file_size > 0').order('pref')
+  }
 
   #callback methods
   def build_relation

@@ -16,7 +16,7 @@ module Rails
 	end
 end
 
-
+=begin
 module Paperclip
   class UploadedFileAdapter
     def inspect
@@ -24,3 +24,4 @@ module Paperclip
     end
   end
 end
+=end

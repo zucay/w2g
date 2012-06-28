@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 class SpotsController < InheritedResources::Base
+  def index
+    @spots = Spot.good.all
+
+  end
   def img
     edit
   end

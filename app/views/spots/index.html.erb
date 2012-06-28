@@ -1,2 +1,41 @@
-Spots index
+<% @v_num = 10  %>
+<% @h_num = 4  %>
 
+<div id="container">
+	<table width="840" cellspacing="0" cellpadding="0" border="0">
+
+		<img src="img/aji.png">
+		<tbody>
+			<% @v_num.times do |i| %>
+			  <tr>
+					<% @h_num.times do |j|  %>
+					  <% spid = (i*@h_num)+j %>
+						<% sp =  @spots[spid] %>
+
+					  <td width="200">
+							<div class="cat_box">
+
+								<%= link_to sp.name, sp  %>
+								<hr>
+ 								<%= sp.pref%>
+								<hr>
+
+  								<%= link_to sp.pic0.url do  %>
+    							  <%= image_tag sp.pic0.url(:small) %>
+  								<% end  %>
+
+									<div class="size12ao">
+										<br>
+										見頃の時期：<%= sp.info_1.gsub(/(.{10}).*/, '\1...') %><br>
+										種別・株数：<%= sp.info_2.gsub(/(.{9}).*/, '\1...') %><br>
+										アクセス：<%= sp.access_train.gsub(/(.{30}).*/, '\1...') %>
+									</div>
+						</td>
+					  <td width="13">
+						</td>						
+					<% end  %>
+				</tr>
+			<% end  %>
+		</tbody>
+	</table>
+</div>
