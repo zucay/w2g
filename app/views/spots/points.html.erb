@@ -1,12 +1,12 @@
 <script type="text/javascript">
 <!--
 window.onload = function(){
-  window.map = new window.MyMap("wFI47HGxg66Jhrcx2E42gSoytx.yIL8xevVCSzdb6JbScNObmUmPVI1H_auIwg--", 'map');
+  window.map = new window.DistanceMap("wFI47HGxg66Jhrcx2E42gSoytx.yIL8xevVCSzdb6JbScNObmUmPVI1H_auIwg--", 'map');
 };
 //-->
 </script>
 距離：<input type="text" class="distance" style="width:60px;"></input>km
-<input type="button" name="countDistance" value="距離計測" onclick="window.map.getDistanceFromMarker('input.distance');"><br>
+<input type="button" name="countDistance" value="距離計測" onclick="window.map.getDistance('input.distance');"><br>
 
 </script>
 座標：<input type="text" class="latlng" style="width:300px;"></input>
