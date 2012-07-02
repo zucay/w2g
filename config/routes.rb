@@ -1,10 +1,6 @@
 W2g::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
-
   ActiveAdmin.routes(self)
-
-  #devise_for :admin_users, ActiveAdmin::Devise.config, ActiveAdmin::Devise.config
-  devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :spots do 
     member do 
@@ -16,9 +12,16 @@ W2g::Application.routes.draw do
       put :update_access
       get :points
     end
+    resources :caretakers
   end
 
-  resources :projects
+  resources :projects do
+    resources :spots do 
+      resources :caretakers
+    end
+    resources :headers
+  end
+
   resources :headers
   resources :notes
   resources :caretakers
