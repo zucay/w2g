@@ -51,5 +51,5 @@ production:
   encoding: unicode
   database: w2g_production
   pool: 5
-  username: w2g
-  password:
+  username: postgres
+  password: user

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120518020101) do
+ActiveRecord::Schema.define(:version => 20120702065247) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -69,12 +69,12 @@ ActiveRecord::Schema.define(:version => 20120518020101) do
     t.string   "deadline"
     t.string   "status"
     t.integer  "note_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "headers", :force => true do |t|
-    t.string   "header_name"
+    t.string   "name"
     t.boolean  "pic_active"
     t.boolean  "pic_not_null"
     t.string   "pic_label"
@@ -150,6 +150,26 @@ ActiveRecord::Schema.define(:version => 20120518020101) do
     t.string   "pic4_file_name_label"
     t.string   "pic4_file_name_example"
     t.string   "pic4_file_name_desc"
+    t.boolean  "lat_256jp_active"
+    t.boolean  "lat_256jp_not_null"
+    t.string   "lat_256jp_label"
+    t.string   "lat_256jp_example"
+    t.string   "lat_256jp_desc"
+    t.boolean  "lng_256jp_active"
+    t.boolean  "lng_256jp_not_null"
+    t.string   "lng_256jp_label"
+    t.string   "lng_256jp_example"
+    t.string   "lng_256jp_desc"
+    t.boolean  "lat_world_active"
+    t.boolean  "lat_world_not_null"
+    t.string   "lat_world_label"
+    t.string   "lat_world_example"
+    t.string   "lat_world_desc"
+    t.boolean  "lng_world_active"
+    t.boolean  "lng_world_not_null"
+    t.string   "lng_world_label"
+    t.string   "lng_world_example"
+    t.string   "lng_world_desc"
     t.boolean  "hour_active"
     t.boolean  "hour_not_null"
     t.string   "hour_label"
@@ -290,8 +310,38 @@ ActiveRecord::Schema.define(:version => 20120518020101) do
     t.string   "info_14_label"
     t.string   "info_14_example"
     t.string   "info_14_desc"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.boolean  "checked_active"
+    t.boolean  "checked_not_null"
+    t.string   "checked_label"
+    t.string   "checked_example"
+    t.string   "checked_desc"
+    t.boolean  "caretaker_inputed_active"
+    t.boolean  "caretaker_inputed_not_null"
+    t.string   "caretaker_inputed_label"
+    t.string   "caretaker_inputed_example"
+    t.string   "caretaker_inputed_desc"
+    t.boolean  "deny_active"
+    t.boolean  "deny_not_null"
+    t.string   "deny_label"
+    t.string   "deny_example"
+    t.string   "deny_desc"
+    t.boolean  "linenum_active"
+    t.boolean  "linenum_not_null"
+    t.string   "linenum_label"
+    t.string   "linenum_example"
+    t.string   "linenum_desc"
+    t.boolean  "active_active"
+    t.boolean  "active_not_null"
+    t.string   "active_label"
+    t.string   "active_example"
+    t.string   "active_desc"
+    t.boolean  "gid_active"
+    t.boolean  "gid_not_null"
+    t.string   "gid_label"
+    t.string   "gid_example"
+    t.string   "gid_desc"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "mst_citycodes", :force => true do |t|
@@ -304,14 +354,14 @@ ActiveRecord::Schema.define(:version => 20120518020101) do
     t.integer  "town_len"
     t.string   "city_yomi"
     t.string   "town_yomi"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "notes", :force => true do |t|
     t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "projects", :force => true do |t|
@@ -320,6 +370,10 @@ ActiveRecord::Schema.define(:version => 20120518020101) do
     t.integer  "header_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "base_file_file_name"
+    t.string   "base_file_content_type"
+    t.integer  "base_file_file_size"
+    t.datetime "base_file_updated_at"
   end
 
   create_table "rsssites", :force => true do |t|

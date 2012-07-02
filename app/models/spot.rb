@@ -4,17 +4,21 @@ require 'loader'
 class Spot < ActiveRecord::Base
   # relations
   belongs_to :project
-  belongs_to :caretaker
-  accepts_nested_attributes_for :caretaker
+  # 2012-07-02 caretaker不要なプロジェクトに対応するためコメントアウト
+  #belongs_to :caretaker
+  #accepts_nested_attributes_for :caretaker
   has_many :communications
   accepts_nested_attributes_for :communications
   belongs_to :note
   accepts_nested_attributes_for :note
   
   #callbacks
+  # 2012-07-02 caretaker不要なプロジェクトに対応するためコメントアウト
   #before_create :build_relation
-  after_initialize :build_relation
+  #after_initialize :build_relation
   before_update :add_update_flg
+  
+  #todo after_saveで測地系変換を行う
 
   # validations
   validates_presence_of :name, :on => :update, :message => '名称は必ず入力してください'

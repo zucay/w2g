@@ -3,16 +3,51 @@ require 'mymatrix'
 require 'citycode'
 require 'output'
 require 'geoutil'
+require 'open-uri'
 class Project < ActiveRecord::Base
+
   has_many :spots
   belongs_to :header
+  s3set = {
+    :storage => :s3,
+    :s3_credentials => W2g::Application.config.S3_CREDENTIALS, 
+    :path => ":attachment/:id.:extension"
+  }
+  has_attached_file :base_file, s3set
 
-  def load(file)
-    mx = MyMatrix.new(file)
-    mx.getHeaders.each do |head|
-      if()
-      else
-        # notfound
+  def load_core(basefile=nil)
+    basefile ||= self.base_file.url
+    if(!basefile || !self.header)
+      raise 'basefile and header are needed.'
+    end
+    mx = MyMatrix.new(basefile)
+    yield(mx)
+  end
+  def load(file=nil)
+    label_cols = self.header.label_cols
+    load_core(file) do |mx|
+      headers = mx.getHeaders
+      mx.each do |row|
+        #sp = self.spots.build
+        sp = Spot.new({:project_id => self.id})
+        headers.each do |head|
+          if(label_cols[head])
+            sp[label_cols[head]] = mx.val(row, head)
+          end
+        end
+        sp.save
+      end
+    end
+  end
+  def loadable?(file=nil)
+    label_cols = self.header.label_cols
+    load_core(file) do |mx|
+      #check header
+      headers = []
+      mx.getHeaders.each do |head|
+        if(!label_cols[head])
+          p "#{head} notfound."
+        end
       end
     end
   end

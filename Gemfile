@@ -11,7 +11,7 @@ gem 'formtastic'
 gem 'activeadmin'
 gem 'inherited_resources'
 gem 'paperclip'
-gem 'aws-sdk', '=1.3.8'
+gem 'aws-sdk'
 gem 'show_for'
 gem 'twitter-bootstrap-rails'
 group :test do

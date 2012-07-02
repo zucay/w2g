@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 class Header < ActiveRecord::Base
   has_many :projects
+  validates_uniqueness_of :name
+  #todo : validates_uniqueness_of *_label
 
   def hint(col_name)
     out = []
@@ -51,15 +53,6 @@ class Header < ActiveRecord::Base
       if(self[label_col] && self[label_col].to_s != '')
         out[self[label_col]] = col
       end
-    end
-    return out
-  end
-
-  # ラベル名=>実際のカラム名というハッシュを返却する
-  def labels
-    out = { }
-    self.column_names.select do |col|
-      out[self[col + '_label']] = col
     end
     return out
   end
