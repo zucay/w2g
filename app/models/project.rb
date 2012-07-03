@@ -4,8 +4,8 @@ require 'citycode'
 require 'output'
 require 'geoutil'
 require 'open-uri'
-class Project < ActiveRecord::Base
 
+class Project < ActiveRecord::Base
   has_many :spots
   belongs_to :header
   s3set = {
@@ -66,6 +66,8 @@ class Project < ActiveRecord::Base
       end
     end
   end
+
+#formatter
   # nameとtel_infoが同一の場合、tel_infoを削除する
   def tel_info_clean
     spots = self.spots
@@ -177,10 +179,10 @@ class Project < ActiveRecord::Base
     ValOutput.to_img(self)
   end
   def tky2jgd
-    Geoutil.ipc2jgd(self.spots.active)
+    Geoutil.ipc2jgd(self.spots)
   end
   def jgd2tky
-    Geoutil.jgd2ipc(self.spots.active)
+    Geoutil.jgd2ipc(self.spots)
   end
   def check_url
     require 'open-uri'

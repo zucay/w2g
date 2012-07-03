@@ -4,7 +4,6 @@ ActiveAdmin.register Project do
       f.input :name
       f.input :client
       f.input :base_file, :as => :file
-
     end
     f.buttons
   end

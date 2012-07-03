@@ -11,6 +11,7 @@ W2g::Application.routes.draw do
       get :access
       put :update_access
       get :points
+      get :pdf
     end
     resources :caretakers
   end

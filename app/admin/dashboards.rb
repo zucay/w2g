@@ -12,13 +12,13 @@ ActiveAdmin::Dashboards.build do
           '名称'
         end
         th do
-          'PU件数'
+          '総件数'
         end
         th do
-          '回答あり件数'
+          '回答あり件数(inputed)'
         end
         th do
-          '拒否軒数'
+          '拒否件数(deny)'
         end
       end
 

@@ -15,6 +15,25 @@ class MyMap
     @map.addControl(new Y.LayerSetControl())
     @map.drawMap(new Y.LatLng(lat, lng), 19, Y.LayerSetId.NORMAL)
     @line = null
+    #座標変換オブジェクト
+    @cv = new Y.DatumConvert()
+    return this
+
+  ll256jpToWorld: (lat_256jp, lng_256jp, callback) ->
+    latjp = parseFloat(lat_256jp) / (256 * 3600)
+    lngjp = parseFloat(lng_256jp) / (256 * 3600)
+    @cv.convertToWgs(new Y.LatLng(_lat, _lng), (ydf) ->
+      ll = ydf.features[0].getLatLng()
+      callback(ll.lat(), ll.lng())
+      return
+    )
+    return
+  ll256jpToCenter: (lat_256jp, lng_256jp) ->
+    ll256jpToWorld(lat_256jp, lng_256jp, (lat, lng)=>
+      alert(lat + ', ' + lng)
+      @map.panTo(new Y.LatLng(lat, lng))
+      return
+      )
     return
 
   drawPolyline:(latlngs, callback=null) ->
@@ -95,6 +114,20 @@ class MyMap
     ll = new Y.LatLng(str_ll[0], str_ll[1])
     @map.panTo(ll, true)
     return
+  deg2dms: (_deg) ->
+    _sf = Math.round(_deg * 360000)
+    _s  = Math.floor(_sf / 100) % 60
+    _m  = Math.floor(_sf / 6000) % 60
+    _d = Math.floor(_sf / 360000)
+    _sf %= 100;
+    if (_m  < 10)
+      _m  = "0" + _m
+    if (_s  < 10)
+      _s  = "0" + _s
+    if (_sf < 10)
+      _sf = "0" + _sf
+    _dms = "" + _d + '.' + _m  + '.' + _s + "." + _sf
+    return _dms
 
 class DistanceMap extends MyMap
   constructor: (@appid, @div_id = 'ymap', @distance_selector = 'input.distance', lat = 35.627832181966376, lng = 139.62137897404472) ->

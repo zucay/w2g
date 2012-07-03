@@ -14,6 +14,9 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'show_for'
 gem 'twitter-bootstrap-rails'
+#gem 'prawn'
+gem 'thinreports'
+
 group :test do
 			gem 'rspec-rails'
 end
