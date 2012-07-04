@@ -5,7 +5,16 @@ require 'json'
 class Geoutil
   #GEOURL = 'http://192.168.11.88:4000/tky2jgd.json'
   GEOURL = 'http://localhost:4000'
-  
+  def self.active?
+    out = true
+    begin
+      open(GEOURL)
+    rescue
+      out = false
+    end
+    return out
+  end
+
   def self.ipc2jgd(records)
     rpc = Restproc.new(GEOURL)
     siz = records.size

@@ -15,6 +15,8 @@ class Spot < ActiveRecord::Base
   #callbacks
   # 2012-07-02 caretaker不要なプロジェクトに対応するためコメントアウト
   #before_create :build_relation
+
+  before_create :before_create
   #after_initialize :build_relation
   before_update :add_update_flg
   
@@ -55,6 +57,12 @@ class Spot < ActiveRecord::Base
     self.project ||= Project.new
     self.caretaker ||= Caretaker.new
   end
+  def before_create
+    if(lat_256jp && !lat_world)
+      tky2jgd
+    end
+  end
+  
   def add_update_flg
     self.caretaker_inputed = true
   end
@@ -108,12 +116,19 @@ class Spot < ActiveRecord::Base
     end
   end
   def tky2jgd
-    Geoutil.ipc2jgd([self])
+    if(Geoutil.active?)
+      Geoutil.ipc2jgd([self], false)
+    else
+      p "geoutil server is not running."
+    end
   end
   def jgd2tky
-    Geoutil.jgd2ipc([self])
+    if(Geoutil.active?)
+      Geoutil.jgd2ipc([self], false)
+    else
+      p "geoutil server is not running."
+    end
   end
-
 
   # public class methods
   def self.load(pj_name, file)
