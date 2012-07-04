@@ -1,0 +1,20 @@
+<script type="text/javascript">
+<!--
+window.onload = function(){
+  window.map = new window.MyMap("<%= #{W2g::Application.config.yappid} %>", 'map', <%= @spot.lat_world.to_f %>, <%= @spot.lng_world.to_f %>);
+//	window.map.ll256jpToCenter(<%= @spot.lat_256jp %>, <%= @spot.lng_256jp %>);
+//	window.map.ll256jpToWorld(<%= @spot.lat_256jp %>,<%= @spot.lng_256jp %>, function(lat, lng) {
+//  	window.map.map.panTo(new Y.LatLng(lat, lng));
+//    alert('hoge');
+//	});
+};
+
+//-->
+</script>
+
+<%= show_for @spot do |sp| %>
+	<% @spot.active_column_names.each do |col_name| %>
+		<%= sp.attribute col_name.to_sym, :label => @spot.header[col_name + '_label'], :if_blank => "(空欄)" %>
+	<% end  %>
+<% end  %>
+<div id="map" style="width:640px; height:480px"></div>

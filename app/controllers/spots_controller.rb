@@ -4,6 +4,12 @@ class SpotsController < InheritedResources::Base
   def index
     @spots = Spot.good.all
   end
+  def show
+    @spot = Spot.find(params[:id])
+    respond_to do |format|
+      format.html {  render :layout => 'twitter'}
+    end
+  end
   def iv_img
     edit
   end

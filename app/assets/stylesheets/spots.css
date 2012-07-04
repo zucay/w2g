@@ -1,0 +1,288 @@
+html, body {
+    margin: 0;
+    min-height: 100%;
+    padding: 0;
+    width: 100%;
+}
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #0D86DA;
+    font-family: Meiryo,'メイリオ','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','ＭＳ Ｐゴシック',sans-serif;
+    line-height: 1.3em;
+    margin: 0;
+    min-height: 100%;
+    padding: 0;
+    width: 100%;
+}
+a img {
+    border: medium none;
+}
+a:link {
+    color: #0D86DA;
+    text-decoration: none;
+}
+a:visited {
+    color: #0D86DA;
+    text-decoration: none;
+}
+a:active {
+    color: #0D86DA;
+    text-decoration: none;
+}
+a:hover {
+    color: #0D86DA;
+    text-decoration: underline;
+}
+a:focus {
+}
+img {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+}
+p {
+    margin: 0;
+    padding: 0;
+}
+br {
+    letter-spacing: 0;
+    margin: 0;
+    padding: 0;
+}
+.goPageTop {
+    margin: 10px 0 20px;
+    text-align: right;
+}
+#header {
+    margin: 0 auto;
+    padding: 0;
+    text-align: right;
+    width: 900px;
+}
+#mainFla {
+    background-color: #00A0E9;
+    height: 250px;
+    margin: 0;
+    padding: 0;
+    width: 900px;
+}
+#contener {
+    margin: 0 auto 20px;
+    padding: 0;
+    width: 900px;
+}
+#footer {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+#ab_global_menu {
+    margin: 0 auto;
+    padding: 0;
+    width: 900px;
+}
+#ab_global_menu table tr td {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+}
+#r_side {
+    display: inline;
+    float: right;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    vertical-align: top;
+    width: 226px;
+}
+#l_side {
+    display: inline;
+    float: left;
+    margin: 0;
+    min-height: 100px;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+    width: 660px;
+}
+#r_side img {
+    vertical-align: top;
+}
+#l_side h1 {
+    margin: 15px 0 10px;
+    padding: 0;
+}
+h1 a {
+    letter-spacing: -2pt;
+}
+* html #l_side h1 {
+    margin: 0 0 10px;
+    padding: 0;
+}
+* + html #l_side h1 {
+    margin: 0 0 10px;
+    padding: 0;
+}
+* + html .img_fix {
+    margin-top: -13px;
+}
+* html .img_fix {
+    margin-top: -13px;
+}
+* + html .img_fix2 {
+    margin-top: -20px;
+}
+* html .img_fix2 {
+    margin-top: -20px;
+}
+* + html .internavi p {
+    margin: 3px 10px;
+}
+* + html .goPageTop {
+    margin: 30px 0 20px;
+}
+* html .goPageTop {
+    margin: 30px 0 20px;
+}
+body {
+    font-size: 16px;
+    line-height: 19px;
+}
+.disabled {
+    ime-mode: disabled;
+}
+.size08 {
+    font-size: 8px;
+    line-height: 1.3em;
+}
+.size09 {
+    font-size: 9px;
+    line-height: 1.3em;
+}
+.size10 {
+    font-size: 10px;
+    line-height: 1.3em;
+}
+.size10b {
+    color: #3300FF;
+    font-size: 10px;
+    line-height: 1.3em;
+}
+.size11 {
+    font-size: 11px;
+    line-height: 1.3em;
+}
+.size12 {
+    font-size: 12px;
+    line-height: 1.3em;
+}
+.size12w {
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 1.3em;
+}
+.size13 {
+    font-size: 13px;
+    line-height: 1.3em;
+}
+.size14 {
+    font-size: 14px;
+    line-height: 1.3em;
+}
+.size14ie {
+    font-size: 16px;
+    line-height: 19px;
+}
+.size18 {
+    font-size: 18px;
+    line-height: 1.5em;
+}
+.size24 {
+    font-size: 24px;
+    line-height: 1.5em;
+}
+.bold_gr {
+    color: #6AA600;
+    font-weight: bold;
+}
+.bold_br {
+    color: #C67012;
+    font-weight: bold;
+}
+.copyright {
+    color: #FFFFFF;
+    font-size: 11px;
+    line-height: 14px;
+}
+.size12nh {
+    font-size: 13px;
+}
+.naviform1 {
+    width: 138px;
+}
+.naviform2 {
+    width: 95px;
+}
+.naviform3 {
+    width: 178px;
+}
+.naviform4 {
+    font-size: 10px;
+    width: 145px;
+}
+.naviform5 {
+    width: 280px;
+}
+.naviform6 {
+    width: 280px;
+}
+.size12ao {
+    font-size: 12px;
+    line-height: 1.3em;
+}
+.size13ao {
+    font-size: 13px;
+    line-height: 1.3em;
+}
+.size20 {
+    font-size: 20px;
+    line-height: 1.5em;
+}
+.size24ao {
+    font-size: 24px;
+    line-height: 1.5em;
+}
+form {
+    margin: 0;
+}
+.regist {
+    color: #993333;
+}
+.letterspace {
+    letter-spacing: normal;
+}
+
+.cat_box {
+    border: 1px solid #0D86DA;
+    height: 300px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 200px;
+}
+
+.size12ao {
+    font-size: 12px;
+    line-height: 1.3em;
+    text-align: left;
+}
+hr {
+    background-color: #0D86DA;
+    border: medium none;
+    color: #23AB38;
+    height: 1px;
+    margin: 12px 0;
+    padding: 0;
+    width: 170px;
+		text-align: center;
+}
