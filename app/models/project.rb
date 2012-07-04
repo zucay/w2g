@@ -14,6 +14,15 @@ class Project < ActiveRecord::Base
     :path => ":attachment/:id.:extension"
   }
   has_attached_file :base_file, s3set
+  
+  # override
+  def dup
+    out = super
+    out.header = out.header.dup
+    out.name = out.name + "copy_from_#{self.id}"
+    out.id = nil
+    return out
+  end
 
   def load_core(basefile=nil)
     basefile ||= self.base_file.url

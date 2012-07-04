@@ -4,6 +4,14 @@ class Header < ActiveRecord::Base
   validates_uniqueness_of :name
   #todo : validates_uniqueness_of *_label
 
+  # override
+  def dup
+    out = super
+    out.name = out.name + "copy_from_#{self.id}"
+    out.id = nil
+    return out
+  end
+
   def hint(col_name)
     out = []
     # 必須
