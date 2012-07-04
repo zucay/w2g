@@ -3,15 +3,16 @@ W2g::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   resources :spots do 
-    member do 
-      get :img
-      post :update_img
-      get :detail
-      post :update_detail
-      get :access
-      put :update_access
-      get :points
-      get :pdf
+    member do
+      get  :iv_img
+      post :iv_update_img
+      get  :iv_detail
+      post :iv_update_detail
+      get  :iv_show
+      get  :access
+      put  :update_access
+      get  :points
+      get  :pdf
     end
     resources :caretakers
   end
@@ -27,8 +28,7 @@ W2g::Application.routes.draw do
   resources :notes
   resources :caretakers
   match '/pointing', :to => 'pointing#index'
-  
-  match '/:id', :to => 'spots#img'
+  match '/:id', :to => 'spots#iv_img'
 
 
   # The priority is based upon order of creation:

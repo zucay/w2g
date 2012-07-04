@@ -4,11 +4,14 @@ class SpotsController < InheritedResources::Base
   def index
     @spots = Spot.good.all
   end
-  def img
+  def iv_img
     edit
   end
-  def detail
+  def iv_detail
     edit
+  end
+  def iv_show
+    show
   end
   def access
     edit
@@ -53,27 +56,27 @@ class SpotsController < InheritedResources::Base
     send_data report.generate, :filename => "#{@sp.linenum}.pdf", :type => 'application/pdf', :disposition => 'attachment'
 
   end
-  def update_img
+  def iv_update_img
     @spot = Spot.find(params[:id])
     respond_to do |format|
       ret = @spot.update_attributes(params[:spot])
       if(ret)
-        format.html {  redirect_to :action => 'detail', :notice => 'Spot was successfully updated.' }
+        format.html {  redirect_to :action => 'iv_detail', :notice => 'Spot was successfully updated.' }
       else
         # todo ng時の行き先検討しないとね
-        format.html {  render :action => "img" }
+        format.html {  render :action => "iv_img" }
       end
     end
   end
-  def update_detail
+  def iv_update_detail
     @spot = Spot.find(params[:id])
     respond_to do |format|
       ret = @spot.update_attributes(params[:spot])
       if(ret)
-        format.html {  redirect_to @spot, :notice => 'Spot was successfully updated.' }
+        format.html {  render :action => "iv_show", :notice => 'Spot was successfully updated.' }
       else
         # todo ng時の行き先検討しないとね
-        format.html {  render :action => "detail" }
+        format.html {  render :action => "iv_detail" }
       end
     end
   end

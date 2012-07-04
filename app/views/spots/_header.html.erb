@@ -11,7 +11,7 @@
 		<% # パーシャル引数としてcurrent:integer を渡す前提  %>
 		<% current ||= 1  %>
 		<% routes = %w[＞＞１．ご回答者様・画像の登録　 ＞＞２．施設情報の登録　 ＞＞３．登録内容の確認　]  %>
-		<% urls = %w[img detail show]  %>
+		<% urls = %w[iv_img iv_detail iv_show]  %>
 		<h5>
 			<% routes.each_with_index do |ele, i|  %>
 				<% if i != current %>
