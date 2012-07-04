@@ -36,7 +36,9 @@ class SpotsController < InheritedResources::Base
         prms << "lat=#{@sp.lat_world}"
         prms << "lon=#{@sp.lng_world}"
         prms.concat(%w[z=19 width=800 height=800 base=bold])
-        prms << "pindefault=#{@sp.lat_world},#{@sp.lng_world}"
+        #prms << "pin=#{@sp.lat_world},#{@sp.lng_world},,yellow"
+        #prms << "e=10,10,10,0,3,0,0,0,80,#{@sp.lat_world},#{@sp.lng_world},2"
+        prms << "pointer=on"
         url = url + prms.join('&')
         p url
         pg.item(:image).src(open(url))
