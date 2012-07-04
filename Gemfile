@@ -17,6 +17,12 @@ gem 'twitter-bootstrap-rails'
 #gem 'prawn'
 gem 'thinreports'
 
+# for qrcode
+gem 'barby'
+gem 'rqrcode'
+gem 'chunky_png'
+
+
 group :test do
 			gem 'rspec-rails'
 end

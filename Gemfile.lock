@@ -47,10 +47,12 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
+    barby (0.5.0)
     bcrypt-ruby (3.0.1)
     bourbon (2.1.1)
       sass (>= 3.1)
     builder (3.0.0)
+    chunky_png (1.2.5)
     cocaine (0.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -161,6 +163,7 @@ GEM
       json (~> 1.4)
     responders (0.9.1)
       railties (~> 3.1)
+    rqrcode (0.4.2)
     rspec (2.10.0)
       rspec-core (~> 2.10.0)
       rspec-expectations (~> 2.10.0)
@@ -222,6 +225,8 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   aws-sdk
+  barby
+  chunky_png
   coffee-rails (~> 3.2.1)
   devise
   formtastic
@@ -232,6 +237,7 @@ DEPENDENCIES
   pg
   rails (= 3.2.3)
   rails-erd
+  rqrcode
   rspec-rails
   sass-rails (~> 3.2.3)
   show_for
