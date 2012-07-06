@@ -374,6 +374,7 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.string   "base_file_content_type"
     t.integer  "base_file_file_size"
     t.datetime "base_file_updated_at"
+    t.string   "genre"
     t.boolean  "active",                 :default => true
     t.string   "type"
   end
