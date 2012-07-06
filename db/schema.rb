@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702065247) do
+ActiveRecord::Schema.define(:version => 20120706020341) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -466,6 +466,7 @@ ActiveRecord::Schema.define(:version => 20120702065247) do
     t.string   "memo"
     t.string   "govcode"
     t.integer  "main_pic_id"
+    t.text     "data"
   end
 
 end

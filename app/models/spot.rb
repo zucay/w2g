@@ -2,6 +2,7 @@
 require 'fileutils'
 require 'loader'
 class Spot < ActiveRecord::Base
+  serialize :data, Hash
   # relations
   belongs_to :project
   # 2012-07-02 caretaker不要なプロジェクトに対応するためコメントアウト
@@ -19,8 +20,6 @@ class Spot < ActiveRecord::Base
   before_create :before_create
   #after_initialize :build_relation
   before_update :add_update_flg
-  
-  #todo after_saveで測地系変換を行う
 
   # validations
   validates_presence_of :name, :on => :update, :message => '名称は必ず入力してください'
@@ -51,6 +50,27 @@ class Spot < ActiveRecord::Base
     active.where('about_body is not null and pic0_file_size > 0').order('pref')
   }
 
+  #attributes that uses the data column
+  data_attributes = %w[polyline]
+  self.class_eval do
+    data_attributes.each do |attr|
+      # get method
+      define_method(attr.to_sym) do
+        p self.class
+        out = nil
+        if(self.data)
+          out = self.data[attr.to_sym]
+        end
+        return out
+      end
+      # set method
+      define_method((attr + '=').to_sym) do |arg|
+        self.data ||= { }
+        self.data[attr.to_sym] = arg
+      end
+    end
+  end
+  
   #callback methods
   def build_relation
     self.project ||= Project.last
