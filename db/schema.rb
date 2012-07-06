@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706020341) do
+ActiveRecord::Schema.define(:version => 20120706033936) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -374,6 +374,8 @@ ActiveRecord::Schema.define(:version => 20120706020341) do
     t.string   "base_file_content_type"
     t.integer  "base_file_file_size"
     t.datetime "base_file_updated_at"
+    t.boolean  "active",                 :default => true
+    t.string   "fileio"
   end
 
   create_table "rsssites", :force => true do |t|
