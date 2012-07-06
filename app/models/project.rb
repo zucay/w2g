@@ -4,6 +4,7 @@ require 'citycode'
 require 'output'
 require 'geoutil'
 require 'open-uri'
+require 'readerwriter'
 
 class Project < ActiveRecord::Base
   has_many :spots
@@ -24,42 +25,6 @@ class Project < ActiveRecord::Base
     return out
   end
 
-  def load_core(basefile=nil)
-    basefile ||= self.base_file.url
-    if(!basefile || !self.header)
-      raise 'basefile and header are needed.'
-    end
-    mx = MyMatrix.new(basefile)
-    yield(mx)
-  end
-  def load(file=nil)
-    label_cols = self.header.label_cols
-    load_core(file) do |mx|
-      headers = mx.getHeaders
-      mx.each do |row|
-        #sp = self.spots.build
-        sp = Spot.new({:project_id => self.id})
-        headers.each do |head|
-          if(label_cols[head])
-            sp[label_cols[head]] = mx.val(row, head)
-          end
-        end
-        sp.save
-      end
-    end
-  end
-  def loadable?(file=nil)
-    label_cols = self.header.label_cols
-    load_core(file) do |mx|
-      #check header
-      headers = []
-      mx.getHeaders.each do |head|
-        if(!label_cols[head])
-          p "#{head} notfound."
-        end
-      end
-    end
-  end
   def gov_coding
     spots = self.spots
     spots.each do |sp|
@@ -74,6 +39,13 @@ class Project < ActiveRecord::Base
         p "govcode notfound: #{sp.id} #{sp.name}"
       end
     end
+  end
+  def load(file = nil)
+    ReaderWriter.read(self, file)
+  end
+  def force_load(file = nil)
+    self.spots.destroy_all
+    load(file)
   end
 
 #formatter

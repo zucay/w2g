@@ -375,7 +375,7 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.integer  "base_file_file_size"
     t.datetime "base_file_updated_at"
     t.boolean  "active",                 :default => true
-    t.string   "fileio"
+    t.string   "type"
   end
 
   create_table "rsssites", :force => true do |t|

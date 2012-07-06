@@ -22,10 +22,10 @@ class Spot < ActiveRecord::Base
   before_update :add_update_flg
 
   # validations
-  validates_presence_of :name, :on => :update, :message => '名称は必ず入力してください'
-  validates_format_of :yomi, :on => :update, :with => /^[ァ-タダ-ヶ　ー]*$/, :message => 'ヨミガナは全角カタカナのみで、入力してください'
-  validates_format_of :tel, :on => :update, :with => /^[0-9\-]*$/, :message => '電話番号は半角数字で入力してください'
-  validates_format_of :pref, :on => :update, :with => /[都道府県]{0,1}$/, :message => '都道府県名のみ入力してください'
+  #validates_presence_of :name, :on => :update, :message => '名称は必ず入力してください'
+  #validates_format_of :yomi, :on => :update, :with => /^[ァ-タダ-ヶ　ー]*$/, :message => 'ヨミガナは全角カタカナのみで、入力してください'
+  #validates_format_of :tel, :on => :update, :with => /^[0-9\-]*$/, :message => '電話番号は半角数字で入力してください'
+  #avalidates_format_of :pref, :on => :update, :with => /[都道府県]{0,1}$/, :message => '都道府県名のみ入力してください'
   
 
   # other settings
