@@ -16,11 +16,9 @@ class Spot < ActiveRecord::Base
   #callbacks
   # 2012-07-02 caretaker不要なプロジェクトに対応するためコメントアウト
   #before_create :build_relation
-
   after_create :after_create
-  #after_initialize :build_relation
   before_update :add_update_flg
-
+  
   # validations
   #validates_presence_of :name, :on => :update, :message => '名称は必ず入力してください'
   #validates_format_of :yomi, :on => :update, :with => /^[ァ-タダ-ヶ　ー]*$/, :message => 'ヨミガナは全角カタカナのみで、入力してください'
@@ -42,7 +40,7 @@ class Spot < ActiveRecord::Base
   has_attached_file :pic3, picset
   has_attached_file :pic4, picset
 
-  # scope
+  # scopes
   scope :deny, where(:deny => true)
   scope :inputed, where(:caretaker_inputed => true, :deny => !true)
   scope :active, where(:active => true, :deny => !true)

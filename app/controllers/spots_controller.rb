@@ -1,8 +1,16 @@
 # -*- coding: utf-8 -*-
 
 class SpotsController < InheritedResources::Base
+
   def index
-    @spots = Spot.good.all
+    sps = Spot
+    # for RAILS_ROOT/projects/:id/spots
+    if(params[:project_id])
+      sps = Project.find(params[:project_id]).spots
+    end
+    # @spots = sps.good.all
+    @spots = sps.all
+    p @spots.size
   end
   def show
     @spot = Spot.find(params[:id])
@@ -98,5 +106,7 @@ class SpotsController < InheritedResources::Base
       end
     end
   end
-
+  private
+  def get_project
+  end
 end
