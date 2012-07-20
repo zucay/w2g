@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.integer  "author_id"
     t.string   "author_type"
     t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "namespace"
   end
 
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.integer  "ext_id"
     t.integer  "note_id"
     t.string   "zipcode"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "communications", :force => true do |t|
@@ -125,31 +125,6 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.string   "tel_info_label"
     t.string   "tel_info_example"
     t.string   "tel_info_desc"
-    t.boolean  "pic0_file_name_active"
-    t.boolean  "pic0_file_name_not_null"
-    t.string   "pic0_file_name_label"
-    t.string   "pic0_file_name_example"
-    t.string   "pic0_file_name_desc"
-    t.boolean  "pic1_file_name_active"
-    t.boolean  "pic1_file_name_not_null"
-    t.string   "pic1_file_name_label"
-    t.string   "pic1_file_name_example"
-    t.string   "pic1_file_name_desc"
-    t.boolean  "pic2_file_name_active"
-    t.boolean  "pic2_file_name_not_null"
-    t.string   "pic2_file_name_label"
-    t.string   "pic2_file_name_example"
-    t.string   "pic2_file_name_desc"
-    t.boolean  "pic3_file_name_active"
-    t.boolean  "pic3_file_name_not_null"
-    t.string   "pic3_file_name_label"
-    t.string   "pic3_file_name_example"
-    t.string   "pic3_file_name_desc"
-    t.boolean  "pic4_file_name_active"
-    t.boolean  "pic4_file_name_not_null"
-    t.string   "pic4_file_name_label"
-    t.string   "pic4_file_name_example"
-    t.string   "pic4_file_name_desc"
     t.boolean  "lat_256jp_active"
     t.boolean  "lat_256jp_not_null"
     t.string   "lat_256jp_label"
@@ -310,6 +285,11 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.string   "info_14_label"
     t.string   "info_14_example"
     t.string   "info_14_desc"
+    t.boolean  "linenum_active"
+    t.boolean  "linenum_not_null"
+    t.string   "linenum_label"
+    t.string   "linenum_example"
+    t.string   "linenum_desc"
     t.boolean  "checked_active"
     t.boolean  "checked_not_null"
     t.string   "checked_label"
@@ -325,11 +305,6 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.string   "deny_label"
     t.string   "deny_example"
     t.string   "deny_desc"
-    t.boolean  "linenum_active"
-    t.boolean  "linenum_not_null"
-    t.string   "linenum_label"
-    t.string   "linenum_example"
-    t.string   "linenum_desc"
     t.boolean  "active_active"
     t.boolean  "active_not_null"
     t.string   "active_label"
@@ -368,8 +343,8 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.string   "name"
     t.string   "client"
     t.integer  "header_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "base_file_file_name"
     t.string   "base_file_content_type"
     t.integer  "base_file_file_size"
@@ -377,18 +352,6 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.string   "genre"
     t.boolean  "active",                 :default => true
     t.string   "type"
-  end
-
-  create_table "rsssites", :force => true do |t|
-    t.string   "name"
-    t.string   "subname"
-    t.string   "url"
-    t.string   "parser_path"
-    t.datetime "lastcrawled_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "parser_name"
-    t.integer  "priority"
   end
 
   create_table "spots", :force => true do |t|
@@ -401,26 +364,6 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.string   "build_name"
     t.string   "tel"
     t.string   "tel_info"
-    t.string   "pic0_file_name"
-    t.string   "pic0_content_type"
-    t.integer  "pic0_file_size"
-    t.datetime "pic0_updated_at"
-    t.string   "pic1_file_name"
-    t.string   "pic1_content_type"
-    t.integer  "pic1_file_size"
-    t.datetime "pic1_updated_at"
-    t.string   "pic2_file_name"
-    t.string   "pic2_content_type"
-    t.integer  "pic2_file_size"
-    t.datetime "pic2_updated_at"
-    t.string   "pic3_file_name"
-    t.string   "pic3_content_type"
-    t.integer  "pic3_file_size"
-    t.datetime "pic3_updated_at"
-    t.string   "pic4_file_name"
-    t.string   "pic4_content_type"
-    t.integer  "pic4_file_size"
-    t.datetime "pic4_updated_at"
     t.integer  "lat_256jp"
     t.integer  "lng_256jp"
     t.float    "lat_world"
@@ -453,6 +396,8 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.string   "info_12"
     t.string   "info_13"
     t.string   "info_14"
+    t.string   "ext_id"
+    t.integer  "linenum"
     t.integer  "user_id"
     t.integer  "caretaker_id"
     t.integer  "project_id"
@@ -460,12 +405,10 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.boolean  "checked"
     t.boolean  "caretaker_inputed"
     t.boolean  "deny",              :default => false
-    t.string   "ext_id"
-    t.integer  "linenum"
     t.boolean  "active"
     t.integer  "gid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "memo"
     t.string   "govcode"
     t.integer  "main_pic_id"

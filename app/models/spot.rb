@@ -17,7 +17,7 @@ class Spot < ActiveRecord::Base
   # 2012-07-02 caretaker不要なプロジェクトに対応するためコメントアウト
   #before_create :build_relation
 
-  before_create :before_create
+  after_create :after_create
   #after_initialize :build_relation
   before_update :add_update_flg
 
@@ -77,7 +77,7 @@ class Spot < ActiveRecord::Base
     self.project ||= Project.new
     self.caretaker ||= Caretaker.new
   end
-  def before_create
+  def after_create
     if(lat_256jp && !lat_world)
       tky2jgd
     end
@@ -137,14 +137,14 @@ class Spot < ActiveRecord::Base
   end
   def tky2jgd
     if(Geoutil.active?)
-      Geoutil.ipc2jgd([self], false)
+      Geoutil.ipc2jgd([self])
     else
       p "geoutil server is not running."
     end
   end
   def jgd2tky
     if(Geoutil.active?)
-      Geoutil.jgd2ipc([self], false)
+      Geoutil.jgd2ipc([self])
     else
       p "geoutil server is not running."
     end

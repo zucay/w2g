@@ -29,7 +29,7 @@ class ReaderWriter
   # external interface
   def self.read(project, file=nil)
     label_cols = project.header.label_cols
-    read_core(file) do |mx|
+    read_core(project, file) do |mx|
       headers = mx.getHeaders
       mx.each do |row|
         sp = Spot.new({:project_id => project.id})

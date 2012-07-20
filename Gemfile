@@ -16,7 +16,8 @@ gem 'show_for'
 gem 'twitter-bootstrap-rails'
 #gem 'prawn'
 gem 'thinreports'
-
+gem 'factory_girl_rails'
+		
 # for qrcode
 gem 'barby'
 gem 'rqrcode'

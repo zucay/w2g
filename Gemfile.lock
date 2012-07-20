@@ -72,6 +72,11 @@ GEM
     exeach (0.0.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (3.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (3.5.0)
+      factory_girl (~> 3.5.0)
+      railties (>= 3.0.0)
     fastercsv (1.5.5)
     formtastic (2.1.1)
       actionpack (~> 3.0)
@@ -229,6 +234,7 @@ DEPENDENCIES
   chunky_png
   coffee-rails (~> 3.2.1)
   devise
+  factory_girl_rails
   formtastic
   inherited_resources
   jquery-rails

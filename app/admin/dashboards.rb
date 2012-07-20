@@ -25,7 +25,7 @@ ActiveAdmin::Dashboards.build do
       Project.all.collect do |pj|
         tr do
           td do
-            link_to("#{pj.name}", admin_spots_path)
+            link_to("#{pj.name}", admin_project_path(pj))
           end
 
           td do
