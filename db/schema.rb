@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706033936) do
+ActiveRecord::Schema.define(:version => 20120730085706) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -71,6 +71,15 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.integer  "note_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "genres", :force => true do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.boolean  "active",     :default => true
+    t.boolean  "public",     :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "headers", :force => true do |t|
@@ -374,7 +383,7 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.string   "base_file_content_type"
     t.integer  "base_file_file_size"
     t.datetime "base_file_updated_at"
-    t.string   "genre"
+    t.integer  "genre_id"
     t.boolean  "active",                 :default => true
     t.string   "type"
     t.boolean  "public",                 :default => false

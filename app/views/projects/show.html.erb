@@ -1,5 +1,5 @@
-HOME > <%= resource.genre %>
-<h2><%= resource.genre %>「<%= resource.name %>」</h2>
+HOME > <%= resource.genre.name %>
+<h2><%= resource.genre.name %>「<%= resource.name %>」</h2>
 <div id='content' style="width:540px">
 <%= resource.description %>
 <% resource.spots.active.each_with_index do |sp, i|  %>

@@ -9,9 +9,10 @@ require 'readerwriter'
 class Project < ActiveRecord::Base
   has_many :spots
   belongs_to :header
+  belongs_to :genre
   scope :public, where('public = ?', true)
   scope :active, where('active = ?', true)
-  scope :with_genre, lambda{|v| where('genre = ?', v)}
+  scope :with_genre, lambda{|v| where('genre_id = ?', v.id)}
   s3set = {
     :storage => :s3,
     :s3_credentials => W2g::Application.config.S3_CREDENTIALS, 
