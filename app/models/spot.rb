@@ -5,6 +5,8 @@ class Spot < ActiveRecord::Base
   serialize :data, Hash
   # relations
   belongs_to :project
+  validates_presence_of :project
+
   # 2012-07-02 caretaker不要なプロジェクトに対応するためコメントアウト
   #belongs_to :caretaker
   #accepts_nested_attributes_for :caretaker
@@ -72,6 +74,13 @@ class Spot < ActiveRecord::Base
     end
   end
   
+  def genre
+    if(self.project)
+      self.project.genre
+    else
+      ''
+    end
+  end
   #callback methods
   def build_relation
     self.project ||= Project.last

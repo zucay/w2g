@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Gallery <%= action_name %>: <%= resource.project.genre %></a>
+          <a class="brand" href="#">Gallery <%= action_name %>: <%= resource.genre %></a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <li><%#= link_to "Link22", "/path1"  %></li>
@@ -48,7 +48,7 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Related Contents</li>
-							<% Project.with_genre(resource.project.genre).public.order('created_at').each do |pj| %>
+							<% Project.with_genre(resource.genre).public.order('created_at').each do |pj| %>
 								<li><%= link_to pj.name, project_path(pj)  %></li>
 							<% end  %>
             </ul>
