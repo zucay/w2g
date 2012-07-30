@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
 class SpotsController < InheritedResources::Base
-
+  layout :select_layout
+  def select_layout
+    'twitter'
+  end
   def index
     sps = Spot
     # for RAILS_ROOT/projects/:id/spots

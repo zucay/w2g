@@ -12,6 +12,8 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag controller.controller_name %>
+    <%= stylesheet_link_tag 'bootstrap_and_overrides' %>
 
     <link href="images/favicon.ico" rel="shortcut icon">
     <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
@@ -31,7 +33,7 @@
           <a class="brand" href="#">W2g</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
+              <li><%= link_to "Link22", "/path1"  %></li>
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
@@ -45,10 +47,10 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li class="nav-header">Related Contents</li>
+							<% Project.public.order('created_at').each do |pj| %>
+								<li><%= link_to pj.name, project_path(pj)  %></li>
+							<% end  %>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

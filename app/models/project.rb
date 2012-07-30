@@ -9,6 +9,9 @@ require 'readerwriter'
 class Project < ActiveRecord::Base
   has_many :spots
   belongs_to :header
+  scope :public, where('public = ?', true)
+  scope :active, where('active = ?', true)
+
   s3set = {
     :storage => :s3,
     :s3_credentials => W2g::Application.config.S3_CREDENTIALS, 

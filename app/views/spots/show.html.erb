@@ -17,6 +17,8 @@
 	<% @spot.active_column_names.each do |col_name| %>
 		<%= f.attribute col_name.to_sym, :label => @spot.header[col_name + '_label'], :if_blank => "(空欄)" %>
 	<% end  %>
+	<% src = "http://jjworkshop.com/cgi-bin/gmap/map.cgi?lat=#{@spot.lat_world}&lng=#{@spot.lng_world}&sc=16&w=600&h=340&sm=1&memo=&url=&fsp=80&mpc=1&msc=1&mtc=1&mov=1&mtp=0" %>
+	<iframe src="<%= src %>" width="600" height="340" frameborder="0" scrolling="off" style="border:1px solid #888888;margin:0px 0px 0px 0px;"></iframe>
 <% end  %>
 </p>
 
