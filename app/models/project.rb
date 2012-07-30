@@ -9,6 +9,7 @@ require 'readerwriter'
 class Project < ActiveRecord::Base
   has_many :spots
   belongs_to :header
+  validates_presence_of :project
   scope :public, where('public = ?', true)
   scope :active, where('active = ?', true)
   scope :with_genre, lambda{|v| where('genre = ?', v)}
