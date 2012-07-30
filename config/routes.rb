@@ -19,6 +19,9 @@ W2g::Application.routes.draw do
 
   resources :projects do
     resources :spots do 
+      member do
+        get :map
+      end
       resources :caretakers
     end
     resources :headers

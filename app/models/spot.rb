@@ -45,7 +45,10 @@ class Spot < ActiveRecord::Base
   scope :inputed, where(:caretaker_inputed => true, :deny => !true)
   scope :active, where(:active => true, :deny => !true)
   scope :good, lambda {
-    active.where('about_body is not null and pic0_file_size > 0').order('pref')
+    actives = active
+    if(actives)
+      actives.where('about_body is not null and pic0_file_size > 0').order('pref')
+    end
   }
 
   #attributes that uses the data column

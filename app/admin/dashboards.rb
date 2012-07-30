@@ -9,23 +9,30 @@ ActiveAdmin::Dashboards.build do
     table do
       tr do
         th do
-          '名称'
+          'pj_id'
+        end
+
+        th do
+          'pj_name'
         end
         th do
-          '総件数'
+          'num'
         end
         th do
-          '回答あり件数(inputed)'
+         'inputed num'
         end
         th do
-          '拒否件数(deny)'
+          'deny num'
         end
       end
 
       Project.all.collect do |pj|
         tr do
+          td do 
+            link_to(pj.id, admin_project_path(pj))
+          end
           td do
-            link_to("#{pj.name}", admin_project_path(pj))
+            pj.name
           end
 
           td do

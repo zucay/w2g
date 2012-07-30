@@ -8,7 +8,6 @@ class SpotsController < InheritedResources::Base
     if(params[:project_id])
       sps = Project.find(params[:project_id]).spots
     end
-    # @spots = sps.good.all
     @spots = sps.all
     p @spots.size
   end
@@ -29,6 +28,9 @@ class SpotsController < InheritedResources::Base
   end
   def access
     edit
+  end
+  def map
+    index
   end
   def pdf
     require 'barby/barcode/qr_code'

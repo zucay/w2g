@@ -1,21 +1,20 @@
-<% @v_num = 10  %>
-<% @h_num = 4  %>
-
 <div id="container">
+	<% @v_num = 10  %>
+	<% @h_num = 4  %>
 	<table width="840" cellspacing="0" cellpadding="0" border="0">
-
 		<img src="img/aji.png">
 		<tbody>
 			<% @v_num.times do |i| %>
 			  <tr>
 					<% @h_num.times do |j|  %>
+						<% #spot  %>
 					  <% spid = (i*@h_num)+j %>
 						<% sp =  @spots[spid] %>
+						<% sp ||=  Spot.new %>
 
 					  <td width="200">
 							<div class="cat_box">
-
-								<%= link_to sp.name, sp  %>
+								<%= link_to sp.name.to_s, sp  %>
 								<hr>
  								<%= sp.pref%>
 								<hr>

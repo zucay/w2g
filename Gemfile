@@ -8,6 +8,7 @@ gem 'rails', '3.2.3'
 gem 'pg'
 gem 'devise'
 gem 'formtastic'
+gem 'cocoon'
 gem 'activeadmin'
 gem 'inherited_resources'
 gem 'paperclip'
@@ -25,10 +26,11 @@ gem 'chunky_png'
 
 
 group :test do
-			gem 'rspec-rails'
+	gem 'rspec-rails'
 end
 group :development do
-			gem 'rails-erd'
+  gem 'rails-erd'
+	gem 'guard-livereload'
 end
 gem 'spreadsheet'
 gem 'mymatrix', '~> 0.0.7'

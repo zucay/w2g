@@ -17,8 +17,8 @@
 			<%= f.input col_name.to_sym, opts %>
 		<% end  %>
 	  <%= render :partial => 'picform', :locals =>{:@spot => @spot, :f => f} %>
-  	<%= f.input :memo, :label => "通信欄" %>  
-		
+  	<%= f.input :memo, :label => "通信欄" %>
+		<%= f.input :caretaker_inputed, :as => :hidden, :value => true %>
 	<% end  %>
 
 	<%= f.buttons do %>
