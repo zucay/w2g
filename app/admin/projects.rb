@@ -8,6 +8,7 @@ ActiveAdmin.register Project do
       f.input :active
       f.input :public
       f.input :created_at
+      f.input :description
     end
     f.buttons
   end

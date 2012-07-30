@@ -1,16 +1,18 @@
 <br />
+<% if(@spot.project) %>
+  <h5>
+  <%= @spot.project.genre %>「<%= @spot.project.name  %>」
+	</h5>
+<% end  %>
 <h3><%= @spot.name %> </h3>
 <br />
-
-<%= link_to @spot.pic0.url do  %>
-	<%= image_tag @spot.pic0.url(:small) %>
-<% end  %>
-<%= link_to @spot.pic1.url do  %>
-	<%= image_tag @spot.pic1.url(:small) %>
-<% end  %>
-<%= link_to @spot.pic2.url do  %>
-	<%= image_tag @spot.pic2.url(:small) %>
-<% end  %>
+<% %w[pic0 pic1 pic2].each do |pic| %>
+	<% if @spot.send(pic + '_file_name') %>
+		<%= link_to @spot.send(pic).url do  %>
+			<%= image_tag @spot.send(pic).url(:small) %>
+		<% end %>
+	<% end %>
+<% end %>
 
 <p>
 <%= show_for @spot do |f| %>

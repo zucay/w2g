@@ -378,6 +378,7 @@ ActiveRecord::Schema.define(:version => 20120706033936) do
     t.boolean  "active",                 :default => true
     t.string   "type"
     t.boolean  "public",                 :default => false
+    t.text     "description"
   end
 
   create_table "rsssites", :force => true do |t|

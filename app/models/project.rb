@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
   belongs_to :header
   scope :public, where('public = ?', true)
   scope :active, where('active = ?', true)
-
+  scope :with_genre, lambda{|v| where('genre = ?', v)}
   s3set = {
     :storage => :s3,
     :s3_credentials => W2g::Application.config.S3_CREDENTIALS, 

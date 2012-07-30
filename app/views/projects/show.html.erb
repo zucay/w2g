@@ -1,8 +1,7 @@
-
-<title>観光情報ギャラリー</title>
-観光情報ギャラリー
-
-<h2><%= Date.today.month %>月の季節特集「<%= resource.name %>」100選</h2>
+HOME > <%= resource.genre %>
+<h2><%= resource.genre %>「<%= resource.name %>」</h2>
+<div id='content' style="width:540px">
+<%= resource.description %>
 <% resource.spots.active.each_with_index do |sp, i|  %>
 	<% if i%4 == 0  %>
 		<br>		<br>
@@ -14,4 +13,4 @@
 	<% end  %>
 
 <% end  %>
-
+</div>
