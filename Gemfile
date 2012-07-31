@@ -33,7 +33,7 @@ group :development do
 	gem 'guard-livereload'
 end
 gem 'spreadsheet'
-gem 'mymatrix', '~> 0.0.7'
+gem 'mymatrix', '~> 0.0.9'
 
 # Gems used only for assets and not required
 # in production environments by default.

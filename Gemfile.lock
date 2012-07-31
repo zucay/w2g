@@ -134,7 +134,7 @@ GEM
     mime-types (1.19)
     multi_json (1.3.6)
     multi_xml (0.5.1)
-    mymatrix (0.0.8)
+    mymatrix (0.0.9)
       exeach
       spreadsheet
     nokogiri (1.5.5)
@@ -263,7 +263,7 @@ DEPENDENCIES
   guard-livereload
   inherited_resources
   jquery-rails
-  mymatrix (~> 0.0.7)
+  mymatrix (~> 0.0.9)
   paperclip
   pg
   rails (= 3.2.3)

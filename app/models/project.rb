@@ -7,8 +7,8 @@ require 'open-uri'
 require 'readerwriter'
 
 class Project < ActiveRecord::Base
-  has_many :spots
-  belongs_to :header
+  has_many :spots, :dependent => :destroy
+  belongs_to :header, :dependent => :destroy
   belongs_to :genre
   scope :public, where('public = ?', true)
   scope :active, where('active = ?', true)
@@ -28,7 +28,9 @@ class Project < ActiveRecord::Base
     out.id = nil
     return out
   end
-
+  def name_with_month
+    out = name + '(' +created_at.strftime("'%y/%m") + ')'
+  end
   def gov_coding
     spots = self.spots
     spots.each do |sp|
