@@ -53,6 +53,14 @@
 							<% end  %>
             </ul>
           </div><!--/.well -->
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Related Spots:<br><%= resource.name %></li>
+							<% resource.spots.active.each do |sp| %>
+								<li><%= link_to(sp.name + '(' + sp.pref + ')', spot_path(sp))  %></li>
+							<% end  %>
+            </ul>
+          </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
           <%= yield %>

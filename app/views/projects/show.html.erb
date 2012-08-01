@@ -3,7 +3,7 @@
 <% spots = resource.spots.active %>
 <div id='content' style="width:540px">
 <%= resource.description %>
-<div id="ymap" style="width:100%; height:480px"></div>
+
 <script type="text/javascript">
 <!--
 window.onload = function(){
@@ -20,6 +20,7 @@ window.onload = function(){
 };
 //-->
 </script>
+<div id="ymap" style="width:97%; height:320px"></div>
 <% spots.each_with_index do |sp, i|  %>
 	<% if i%4 == 0  %>
 		<br>		<br>
@@ -31,4 +32,5 @@ window.onload = function(){
 	<% end  %>
 
 <% end  %>
+
 </div>

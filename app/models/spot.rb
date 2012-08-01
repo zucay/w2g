@@ -52,7 +52,6 @@ class Spot < ActiveRecord::Base
       actives.where('about_body is not null and pic0_file_size > 0').order('pref')
     end
   }
-
   #attributes that uses the data column
   data_attributes = %w[polyline]
   self.class_eval do
@@ -80,6 +79,12 @@ class Spot < ActiveRecord::Base
     else
       ''
     end
+  end
+  def spots
+    nearby(20)
+  end
+  def nearby(num)
+    self.project.spots.limit(20)
   end
   #callback methods
   def build_relation
