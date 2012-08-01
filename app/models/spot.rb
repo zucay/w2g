@@ -84,6 +84,8 @@ class Spot < ActiveRecord::Base
     nearby(20)
   end
   def nearby(num)
+    # todo: rewrite with spacial data 
+    # This implementation is lazy.
     self.project.spots.limit(20)
   end
   #callback methods
