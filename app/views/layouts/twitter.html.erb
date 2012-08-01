@@ -69,6 +69,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
-
+    <%= javascript_include_tag "bootstrap" %>
+		<%= javascript_include_tag "http://js.api.olp.yahooapis.jp/OpenLocalPlatform/V1/jsapi?appid=#{W2g::Application.config.yappid}" %>
+    <%= javascript_include_tag controller.controller_name %>
   </body>
 </html>
