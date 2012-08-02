@@ -32,5 +32,4 @@ class DistanceMap extends MyMap
     return
 
 
-
 window.DistanceMap = DistanceMap

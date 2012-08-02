@@ -6,14 +6,15 @@
 <% end  %>
 <h3><%= @spot.name %> </h3>
 <br />
-<% %w[pic0 pic1 pic2].each do |pic| %>
-	<% if @spot.send(pic + '_file_name') %>
-		<%= link_to @spot.send(pic).url do  %>
-			<%= image_tag @spot.send(pic).url(:small) %>
+<div id="gallery">
+	<% %w[pic0 pic1 pic2].each do |pic| %>
+		<% if @spot.send(pic + '_file_name') %>
+			<%= link_to @spot.send(pic).url, :rel => 'lightbox[spots]', :title => @spot.name do  %>
+				<%= image_tag @spot.send(pic).url(:small) %>
+			<% end %>
 		<% end %>
 	<% end %>
-<% end %>
-
+</div>
 <p>
 <%= show_for @spot do |f| %>
 	<% @spot.active_column_names.each do |col_name| %>
@@ -25,6 +26,8 @@
 </p>
 
 
-
 <br />
 <%= render 'footer' %>
+<script type="text/javascript">
+
+</script>
