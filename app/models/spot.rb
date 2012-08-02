@@ -19,8 +19,7 @@ class Spot < ActiveRecord::Base
   # 2012-07-02 caretaker不要なプロジェクトに対応するためコメントアウト
   #before_create :build_relation
   after_create :after_create
-  before_update :add_update_flg
-  
+
   # validations
   #validates_presence_of :name, :on => :update, :message => '名称は必ず入力してください'
   #validates_format_of :yomi, :on => :update, :with => /^[ァ-タダ-ヶ　ー]*$/, :message => 'ヨミガナは全角カタカナのみで、入力してください'
@@ -100,10 +99,6 @@ class Spot < ActiveRecord::Base
     end
   end
   
-  def add_update_flg
-    self.caretaker_inputed = true
-  end
-
   # public instance methods
   def active_column_names
     self.project.header.active_column_names
