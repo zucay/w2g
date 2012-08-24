@@ -165,6 +165,15 @@ class Project < ActiveRecord::Base
     p 'saving image..'
     ValOutput.to_img(self)
   end
+  def to_pdf
+    require 'open-uri'
+    spots.verbose_each do |spot|
+      url = "http://localhost:3011/spots/#{spot.id}/pdf"
+      fo = open("tmp/pdf/#{spot.linenum}_#{spot.name}.pdf", 'wb')
+      fo.write(open(url).read)
+      fo.close
+    end
+  end
   def tky2jgd
     Geoutil.ipc2jgd(self.spots)
   end

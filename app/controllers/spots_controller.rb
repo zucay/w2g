@@ -45,7 +45,7 @@ class SpotsController < InheritedResources::Base
     @sp = Spot.find(params[:id])
     report = ThinReports::Report.create :layout => File.join(Rails.root, 'doc', 'point_check.tlf') do |r|
       r.start_new_page do |pg|
-        %w[name yomi hour park_num park_fee].each do |ele|
+        %w[name yomi hour park_num park_fee info_13].each do |ele|
           pg.item(ele.to_sym).value(@sp[ele])
         end
         pg.item(:addr).value(@sp.pref.to_s + @sp.city.to_s + @sp.addr.to_s)
