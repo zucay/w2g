@@ -35,9 +35,6 @@ end
 gem 'spreadsheet'
 gem 'mymatrix', '= 0.0.8'
 
-group :production do
-  gem 'passenger'
-end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -51,8 +48,8 @@ gem 'jquery-rails'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the web server
-# gem 'unicorn'
-
+gem 'unicorn'
+#gem 'passenger'
 # Deploy with Capistrano
 # gem 'capistrano'
 
