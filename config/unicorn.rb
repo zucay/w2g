@@ -2,7 +2,7 @@
 worker_processes 2
 rails_env = 'production'
 
-port = 5000
+port = 5001
 listen port, :tcp_nopush => true
 # unix socket for nginx
 #listen File.expand_path('tmp/unicorn.sock', ENV['RAILS_ROOT'])
