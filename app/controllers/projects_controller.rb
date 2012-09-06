@@ -5,7 +5,6 @@ class ProjectsController < InheritedResources::Base
   end
   def index
     redirect_to project_url(Project.public.order('created_at').last)
-    super
   end
   def show
     begin
@@ -15,6 +14,7 @@ class ProjectsController < InheritedResources::Base
       end
       super
     rescue
+      #when the resource is not found
       redirect_to project_url(Project.public.order('created_at').last)
     end
   end

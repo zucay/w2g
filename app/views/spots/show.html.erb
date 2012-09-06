@@ -1,10 +1,11 @@
 <br />
 <% if(@spot.project) %>
   <h5>
-		<%= @spot.project.genre.name %>「<%= @spot.project.name  %>」
+		<%= @spot.project.genre.name %>「<%= @spot.project.name  %>」＞ <%= @spot.pref %>
 	</h5>
 <% end  %>
-<h3><%= @spot.name %> </h3>
+<h2><%= @spot.name %> </h2>
+
 <br />
 <div id="gallery">
 	<% %w[pic0 pic1 pic2].each do |pic| %>

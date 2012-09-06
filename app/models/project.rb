@@ -15,11 +15,11 @@ class Project < ActiveRecord::Base
   scope :with_genre, lambda{|v| where('genre_id = ?', v.id)}
   s3set = {
     :storage => :s3,
-    :s3_credentials => W2g::Application.config.S3_CREDENTIALS, 
+    :s3_credentials => W2g::Application.config.S3_CREDENTIALS,
     :path => ":attachment/:id.:extension"
   }
   has_attached_file :base_file, s3set
-  
+
   # override
   def dup
     out = super
@@ -196,10 +196,20 @@ class Project < ActiveRecord::Base
       end
     end
   end
-  
+  def next_spot(sp)
+    out = self.spots.active.where('id > ?', sp.id).order('id').first
+    out ||= self.spots.active.first
+  end
+  def prev_spot(sp)
+    out = self.spots.active.where('id < ?', sp.id).order('id').last
+    out ||= self.spots.active.last
+  end
   def self.exec(proj_id, cmd, *args)
     pj = Project.find(proj_id)
     pj.send(cmd, *args)
   end
-
+  # like Spot
+  def pref
+    nil
+  end
 end

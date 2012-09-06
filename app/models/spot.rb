@@ -51,6 +51,14 @@ class Spot < ActiveRecord::Base
       actives.where('about_body is not null and pic0_file_size > 0').order('pref')
     end
   }
+  scope :with_projects, lambda{|pjs|
+    where('project_id in (?)', pjs)
+  }
+  scope :related, lambda{|pref|
+    if(!pref.blank?)
+      find_all_by_pref(pref)
+    end
+  }
   #attributes that uses the data column
   data_attributes = %w[polyline]
   self.class_eval do
@@ -161,7 +169,15 @@ class Spot < ActiveRecord::Base
       p "geoutil server is not running."
     end
   end
-
+  def next_spot
+    self.project.next_spot(self)
+  end
+  def prev_spot
+    self.project.prev_spot(self)
+  end
+  def name_with_pref
+    "#{self.name.to_s}(#{self.pref.to_s})"
+  end
   # public class methods
   def self.load(pj_name, file)
     pj = Project.find_by_name(pj_name)
@@ -190,7 +206,6 @@ class Spot < ActiveRecord::Base
       end
     end
   end
-
   def self.stat(pj_name)
 
   end
