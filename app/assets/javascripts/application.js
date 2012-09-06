@@ -7,5 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require lightbox
+//= require jquery.champagne
+//= require jquery.tipTip
 //= require twitter/bootstrap
 //= #require_tree .
