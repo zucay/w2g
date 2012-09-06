@@ -47,5 +47,8 @@ module W2g
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Timezone
+    config.time_zone = 'Tokyo'
   end
 end

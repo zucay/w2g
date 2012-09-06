@@ -4,10 +4,11 @@
 #= require mymap
 $( ->
   $( 'tip' ).tipTip();
-  $("ul.champagne").champagne({
-    beginning_delay: 200,
-    delay_between: 200,
-    duration: 500,
+
+  $("ul.champagne_").champagne({
+    beginning_delay: 20,
+    delay_between: 20,
+    duration: 50,
     onFinish: ->
       alert('finish')
       return

@@ -49,7 +49,7 @@
             <ul class="nav nav-list">
               <li class="nav-header">Related Contents:<br><%= resource.genre.name %></li>
 							<% Project.with_genre(resource.genre).order('created_at DESC').each do |pj| %>
-								<li><%= link_to pj.name_with_month, project_path(pj)  %></li>
+								<li><%= link_to pj.name, project_path(pj)  %></li>
 							<% end  %>
             </ul>
           </div><!--/.well -->
