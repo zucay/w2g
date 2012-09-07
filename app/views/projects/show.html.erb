@@ -1,5 +1,13 @@
-<h5>HOME > <%= resource.genre.name %></h5>
-<h2><%= resource.genre.name %>「<%= resource.name %>」</h2>
+<% title = "#{resource.genre.name} 「#{resource.name}」" %>
+<% content_for :title, title %>
+
+<ul class="breadcrumb">
+	<li><a href="/">HOME</a> <span class="divider">/</span> </li>
+	<li><%= link_to resource.genre.name, Project %><span class="divider">/</span></li>
+	<li class="active"><%= resource.name %></li>
+</ul>
+
+<h2><%= title %></h2>
 <% spots = resource.spots.active %>
 <div id='content' style="width:690px">
 <%= resource.description %>
@@ -15,7 +23,7 @@ window.onload = function(){
 	window.map.hideCenterMark();
 
 	<% spots.each do |sp| %>
-		window.map.addLinkMarker(<%= sp.lat_world %>,<%= sp.lng_world %>, "<%= spot_path(sp) %>", {title:"<%= sp.name %><br><img src=<%= sp.pic0.url(:small) %>><br><%= sp.about_body.first(10) + '…' %>"});
+		window.map.addLinkMarker(<%= sp.lat_world %>,<%= sp.lng_world %>, "<%= spot_path(sp) %>", {title:"<%= sp.name %><br><img src=<%= sp.pic0.url(:small) %> alt="<%= sp.name %>"><br><%= sp.about_body.first(10) + '…' %>"});
 	<% end  %>
 
 };
@@ -27,8 +35,7 @@ window.onload = function(){
 	<% spots.each_with_index do |sp, i|  %>
 		<li>
 			<%= link_to sp do  %>
-				<% title = "#{sp.name.to_s}(#{sp.pref.to_s})"  %>
-				<%= image_tag sp.pic0.url(:small), :class => "tip", :title => title %>
+				<%= image_tag sp.pic0.url(:small), :class => "tip", :title => sp.name_with_pref, :alt => sp.name_with_pref %>
 			<% end  %>
 		</li>
 	<% end  %>

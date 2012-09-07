@@ -50,5 +50,9 @@ module W2g
 
     # Timezone
     config.time_zone = 'Tokyo'
+
+    # organization
+    organization = Struct.new("Organization", :name, :long_name, :email, :url)
+    config.organization = organization.new("fuwafuwa", "fuwafuwa_company", "fuwa@fuwa.net", "http://www.fuwafuwa.net")
   end
 end

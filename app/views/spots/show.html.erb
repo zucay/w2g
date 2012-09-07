@@ -1,17 +1,17 @@
-<br />
-<% if(@spot.project) %>
-  <h5>
-		<%= @spot.project.genre.name %>「<%= @spot.project.name  %>」＞ <%= @spot.pref %>
-	</h5>
-<% end  %>
-<h2><%= @spot.name %> </h2>
+<% title = "#{@spot.project.genre.name}:#{@spot.name_with_pref}"  %>
+<% content_for :title, title  %>
+<ul class="breadcrumb">
+	<li><a href="/">HOME</a> <span class="divider">/</span> </li>
+	<li><%= link_to resource.genre.name, Project %><span class="divider">/</span></li>
+	<li><%= link_to resource.project.name, resource.project %></li><span class="divider">/</span>
+	<li class="active"><%= resource.name_with_pref %></li>
+</ul>
 
-<br />
 <div id="gallery">
 	<% %w[pic0 pic1 pic2].each do |pic| %>
 		<% if @spot.send(pic + '_file_name') %>
 			<%= link_to @spot.send(pic).url, :rel => 'lightbox[spots]', :title => @spot.name do  %>
-				<%= image_tag @spot.send(pic).url(:small) %>
+				<%= image_tag @spot.send(pic).url(:small), :alt => @spot.name_with_pref %>
 			<% end %>
 		<% end %>
 	<% end %>
