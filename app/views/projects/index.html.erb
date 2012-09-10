@@ -1,5 +1,5 @@
 <% resource ||= Project.public.last %>
-<% title = "#{@org.name} #{resource.genre.name}" %>
+<% title = "#{@org.long_name} #{resource.genre.name}" %>
 <% content_for :title, title %>
 
 <ul class="breadcrumb">
