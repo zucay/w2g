@@ -20,7 +20,7 @@
 			
 			<% pj.spots.active.first(4).each do |sp|  %>
 				<li class="span3">
-					<%= link_to(sp, :class=>"thumbnail") do %>
+					<%= link_to(sp.project, :class=>"thumbnail") do %>
   				<%= image_tag sp.pic0.url(:small), :alt => sp.name_with_pref %>
 					<h5><%= sp.name_with_pref %></h5>
 
