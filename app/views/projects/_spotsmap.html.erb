@@ -1,0 +1,19 @@
+<script type="text/javascript">
+<!--
+window.onload = function(){
+  //alert('hoge');
+  window.map = new MyMap("ymap");
+	//window.map.drawJapan();
+	window.map.drawHonshu();
+	window.map.hideSearch();
+	window.map.hideCenterMark();
+
+	<% spots.each do |sp| %>
+  	window.map.addLinkMarker(<%= sp.lat_world %>,<%= sp.lng_world %>, "<%= spot_path(sp) %>", {title:"<%= sp.name %><br><img src='<%= sp.pic0.url(:small) %>'>"})
+	<% end  %>
+
+};
+
+//-->
+</script>
+<div id="ymap" style="width:97%; height:600px"></div>
