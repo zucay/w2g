@@ -1,5 +1,6 @@
 
 module ProjectsHelper
+=begin
   include Arbre::HTML
   include Arbre::Builder
 
@@ -12,4 +13,5 @@ module ProjectsHelper
   end
   def hoge
   end
+=end
 end

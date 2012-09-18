@@ -3,7 +3,7 @@ require 'mymatrix'
 
 class Output
   # テキストを出力する
-  def self.to_t_core(proj)
+  def self.to_t_core(proj, opts={ })
     name = self.make_file_name(proj)
     mx = MyMatrix.new
     mx.addHeaders(self.make_header(proj))
@@ -12,7 +12,7 @@ class Output
       row = yield(sp,n)
       mx << row
     end
-    mx.to_t(name)
+    mx.to_t(name, opts)
   end
   # 画像を出力する
   def self.to_img_core(proj)
@@ -53,7 +53,7 @@ class Output
 end
 
 class ValOutput < Output
-  def self.park(sp)
+  def self.park_old(sp)
     out = 'なし'
     if(sp.has_park)
       detail = ([sp.park_num, sp.park_fee] - ['']).join('／')
@@ -61,19 +61,26 @@ class ValOutput < Output
     end
     return out
   end
-  def self.make_header(proj)
+  def self.park(sp)
+    return sp.park_num
+  end
+  def self.make_header_old(proj)
     out = %w[ID 名称 名称ヨミ 都道府県 残り住所 電話番号 問合わせ先 営業期間／営業時間 休業日 駐車場の有無／台数 アクセス電車 アクセス車 料金 HPアドレス 紹介文（100～200文字） 緯度（日本測地系ミリ秒） 経度（日本測地系ミリ秒） 画像ファイル名]
     out << 'ユニーク項目①　' + proj.header.info_0_label
     out << 'ユニーク項目②　' + proj.header.info_1_label
     out << 'ユニーク項目③　' + proj.header.info_2_label
     return out
   end
+  def self.make_header(proj)
+    return %w[id name yomi state address tel telname time holiday park access_train access_car fee url description lati longi image etc_1 etc_2 etc_3]
+  end
+  
   def self.to_t(proj)
     #小クラスで実装必須
-    self.to_t_core(proj) do |sp, n|
+    self.to_t_core(proj, :separator => ',', :encode => 'UTF-8') do |sp, n|
 
       extid = sprintf("%04d", n)
-      extid = sp.id
+      #extid = sp.id
       [extid, sp.name, sp.yomi, sp.pref, sp.addr, sp.tel, sp.tel_info, sp.hour, sp.holiday, self.park(sp),
        sp.access_train, sp.access_car, sp.spot_fee, sp.url,
        # 紹介文
