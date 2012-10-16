@@ -2,32 +2,31 @@
 <% title = "#{@org.long_name} #{resource.genre.name}" %>
 <% content_for :title, title %>
 
+<!--
 <ul class="breadcrumb">
 	<li><a href="/">HOME</a> <span class="divider">/</span> </li>
 	<li class="active"><%= link_to resource.genre.name, '#' %></li>
 </ul>
-
-<h2><%= title %></h2>
-<% spots = resource.spots.active %>
-
-<%= resource.description %>
-<script type="text/javascript">
-</script>
-<div class="row-fluid">
-	<% Project.public.each do |pj|  %>
-		<h3><%= link_to pj.name, pj %></h3>
-		<ul class="thumbnails">
-			
-			<% pj.spots.active.first(4).each do |sp|  %>
-				<li class="span3">
-					<%= link_to(sp.project, :class=>"thumbnail") do %>
-  				<%= image_tag sp.pic0.url(:small), :alt => sp.name_with_pref %>
-					<h5><%= sp.name_with_pref %></h5>
-
-
-					<% end %>
-				</li>
-			<% end  %>
-		</ul>
-	<% end  %>
+-->
+<d>
+<div class="hero-unit" style="background-image: url(img/hero_img.jpg);height: 66px">
+ 
 </div>
+
+<% Project.public.each do |pj|  %>
+	<div class="well">
+		<h3><%= link_to pj.name, pj %></h3>
+		<% pic_num = 6  %>
+		<table class="table table-sstriped"><tbody><tr>
+		<% pj.spots.first(pic_num).each do |sp|  %>
+			<td width="#{(100/pic_num).to_i}%">
+			<%= link_to(sp.project) do %>
+  			<%= image_tag sp.pic0.url(:small), :alt => sp.name_with_pref %>
+				<h5><%= sp.name_with_pref %></h5>
+			<% end %>
+			</td>
+		<% end  %>
+		</tr></tbody></table>
+	</div>
+<% end  %>
+

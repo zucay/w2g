@@ -2,8 +2,7 @@ class ProjectsController < InheritedResources::Base
   layout :select_layout
   def select_layout
     if(action_name == 'index')
-      #'twitter_hero'
-      'twitter'
+      'twitter_hero'
     else
       'twitter'
     end
