@@ -9,10 +9,11 @@
 
 <h2><%= title %></h2>
 <% spots = resource.spots.active %>
+
 <div id='content' style="width:690px">
 <%= resource.description %>
 <%= resource.created_at.strftime("(%Y/%m)") %>
-
+<%= render :partial => "spotsmap", :locals => {:spots => spots} %>
 <ul class="champagne">
 	<% spots.each_with_index do |sp, i|  %>
 		<li>
@@ -22,5 +23,5 @@
 		</li>
 	<% end  %>
 </ul>
-<%= render :partial => "spotsmap", :locals => {:spots => spots} %>
+
 </div>
