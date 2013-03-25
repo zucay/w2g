@@ -47,6 +47,7 @@ test:
   password: user
 
 production:
+  host: 192.168.11.11
   adapter: postgresql
   encoding: unicode
   database: w2g_production
