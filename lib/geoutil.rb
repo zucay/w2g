@@ -4,7 +4,7 @@ require 'mymatrix'
 require 'json'
 class Geoutil
   #GEOURL = 'http://192.168.11.88:4000/tky2jgd.json'
-  GEOURL = 'http://localhost:4000'
+  GEOURL = 'http://localhost:4000/tky2jgd.json'
   def self.active?
     out = true
     begin
